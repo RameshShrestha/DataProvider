@@ -168,7 +168,8 @@ if (majorNodeVersion >= 14) {
 }
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.NODE_ENV === "production" ? false : ["http://localhost:3000", "http://127.0.0.1:3000"]
+    origin: process.env.NODE_ENV === "production" ? false : ["http://localhost:3000", "http://127.0.0.1:3000",
+                                                             "https:rameshdataprovider.onrender.com"]
   }
 })
 var chatController = require('./SocketControllers/chatController');
