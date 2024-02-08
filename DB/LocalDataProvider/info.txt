@@ -1,0 +1,4 @@
+Data in this folder will be copied from the mongoose db when connected 
+When DB is not available , this will be used as data source to provide requested data without saving it in 
+Mongo DB.
+This will have some limitation

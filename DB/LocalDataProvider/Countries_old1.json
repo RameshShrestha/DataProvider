@@ -1,0 +1,2251 @@
+[
+    {
+        "Country": "Afghanistan",
+        "ISO_Code": "93",
+        "CountryCode2": "AF",
+        "CountryCode3": "AFG",
+        "CurrencyName": "Afghan Afghani",
+        "CurrencyCode": "AFN",
+        "CapitalCity": "Kabul"
+    },
+    {
+        "Country": "ÅLand Islands",
+        "ISO_Code": "358",
+        "CountryCode2": "AX",
+        "CountryCode3": "ALA",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR"
+    },
+    {
+        "Country": "Albania",
+        "ISO_Code": "355",
+        "CountryCode2": "AL",
+        "CountryCode3": "ALB",
+        "CurrencyName": "Albanian Lek",
+        "CurrencyCode": "ALL",
+        "CapitalCity": "Tirana"
+    },
+    {
+        "Country": "Algeria",
+        "ISO_Code": "213",
+        "CountryCode2": "DZ",
+        "CountryCode3": "DZA",
+        "CurrencyName": "Algerian Dinar",
+        "CurrencyCode": "DZD",
+        "CapitalCity": "Algiers"
+    },
+    {
+        "Country": "American Samoa",
+        "ISO_Code": "1684",
+        "CountryCode2": "AS",
+        "CountryCode3": "ASM",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Pago Pago"
+    },
+    {
+        "Country": "Andorra",
+        "ISO_Code": "376",
+        "CountryCode2": "AD",
+        "CountryCode3": "AND",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Andorra la Vella"
+    },
+    {
+        "Country": "Angola",
+        "ISO_Code": "244",
+        "CountryCode2": "AO",
+        "CountryCode3": "AGO",
+        "CurrencyName": "Angolan Kwanza",
+        "CurrencyCode": "AOA",
+        "CapitalCity": "Luanda"
+    },
+    {
+        "Country": "Anguilla",
+        "ISO_Code": "1264",
+        "CountryCode2": "AI",
+        "CountryCode3": "AIA",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "The Valley"
+    },
+    {
+        "Country": "Antarctica",
+        "ISO_Code": "672",
+        "CountryCode2": "AQ",
+        "CountryCode3": "ATA",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD"
+    },
+    {
+        "Country": "Antigua and Barbuda",
+        "ISO_Code": "1268",
+        "CountryCode2": "AG",
+        "CountryCode3": "ATG",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "Saint John's"
+    },
+    {
+        "Country": "Argentina",
+        "ISO_Code": "54",
+        "CountryCode2": "AR",
+        "CountryCode3": "ARG",
+        "CurrencyName": "Argentine Peso",
+        "CurrencyCode": "ARS",
+        "CapitalCity": "Buenos Aires"
+    },
+    {
+        "Country": "Armenia",
+        "ISO_Code": "374",
+        "CountryCode2": "AM",
+        "CountryCode3": "ARM",
+        "CurrencyName": "Armenian Dram",
+        "CurrencyCode": "AMD",
+        "CapitalCity": "Yerevan"
+    },
+    {
+        "Country": "Aruba",
+        "ISO_Code": "297",
+        "CountryCode2": "AW",
+        "CountryCode3": "ABW",
+        "CurrencyName": "Aruban Florin",
+        "CurrencyCode": "AWG",
+        "CapitalCity": "Oranjestad"
+    },
+    {
+        "Country": "Ascension Island",
+        "ISO_Code": "247",
+        "CountryCode2": "AC",
+        "CountryCode3": "ASC",
+        "CurrencyName": "Saint Helena Pound",
+        "CurrencyCode": "SHP"
+    },
+    {
+        "Country": "Australia",
+        "ISO_Code": "61",
+        "CountryCode2": "AU",
+        "CountryCode3": "AUS",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD",
+        "CapitalCity": "Canberra"
+    },
+    {
+        "Country": "Austria",
+        "ISO_Code": "43",
+        "CountryCode2": "AT",
+        "CountryCode3": "AUT",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Vienna"
+    },
+    {
+        "Country": "Azerbaijan",
+        "ISO_Code": "994",
+        "CountryCode2": "AZ",
+        "CountryCode3": "AZE",
+        "CurrencyName": "Azerbaijani Manat",
+        "CurrencyCode": "AZN",
+        "CapitalCity": "Baku"
+    },
+    {
+        "Country": "Bahamas",
+        "ISO_Code": "1242",
+        "CountryCode2": "BS",
+        "CountryCode3": "BHS",
+        "CurrencyName": "Bahamian Dollar",
+        "CurrencyCode": "BSD"
+    },
+    {
+        "Country": "Bahrain",
+        "ISO_Code": "973",
+        "CountryCode2": "BH",
+        "CountryCode3": "BHR",
+        "CurrencyName": "Bahraini Dinar",
+        "CurrencyCode": "BHD",
+        "CapitalCity": "Manama"
+    },
+    {
+        "Country": "Bangladesh",
+        "ISO_Code": "880",
+        "CountryCode2": "BD",
+        "CountryCode3": "BGD",
+        "CurrencyName": "Bangladeshi Taka",
+        "CurrencyCode": "BDT",
+        "CapitalCity": "Dhaka"
+    },
+    {
+        "Country": "Barbados",
+        "ISO_Code": "1246",
+        "CountryCode2": "BB",
+        "CountryCode3": "BRB",
+        "CurrencyName": "Barbadian Dollar",
+        "CurrencyCode": "BBD",
+        "CapitalCity": "Bridgetown"
+    },
+    {
+        "Country": "Belarus",
+        "ISO_Code": "375",
+        "CountryCode2": "BY",
+        "CountryCode3": "BLR",
+        "CurrencyName": "Belarusian Ruble",
+        "CurrencyCode": "BYN",
+        "CapitalCity": "Minsk"
+    },
+    {
+        "Country": "Belgium",
+        "ISO_Code": "32",
+        "CountryCode2": "BE",
+        "CountryCode3": "BEL",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Brussels"
+    },
+    {
+        "Country": "Belize",
+        "ISO_Code": "501",
+        "CountryCode2": "BZ",
+        "CountryCode3": "BLZ",
+        "CurrencyName": "Belize Dollar",
+        "CurrencyCode": "BZD",
+        "CapitalCity": "Belmopan"
+    },
+    {
+        "Country": "Benin",
+        "ISO_Code": "229",
+        "CountryCode2": "BJ",
+        "CountryCode3": "BEN",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF",
+        "CapitalCity": "Porto-Novo"
+    },
+    {
+        "Country": "Bermuda",
+        "ISO_Code": "1441",
+        "CountryCode2": "BM",
+        "CountryCode3": "BMU",
+        "CurrencyName": "Bermudan Dollar",
+        "CurrencyCode": "BMD",
+        "CapitalCity": "Hamilton"
+    },
+    {
+        "Country": "Bhutan",
+        "ISO_Code": "975",
+        "CountryCode2": "BT",
+        "CountryCode3": "BTN",
+        "CurrencyName": "Indian Rupee",
+        "CurrencyCode": "INR",
+        "CapitalCity": "Thimphu"
+    },
+    {
+        "Country": "Bolivia",
+        "ISO_Code": "591",
+        "CountryCode2": "BO",
+        "CountryCode3": "BOL",
+        "CurrencyName": "Bolivian Boliviano",
+        "CurrencyCode": "BOB",
+        "CapitalCity": "La Paz , Sucre"
+    },
+    {
+        "Country": "Bosnia and Herzegovina",
+        "ISO_Code": "387",
+        "CountryCode2": "BA",
+        "CountryCode3": "BIH",
+        "CurrencyName": "Bosnia-Herzegovina Convertible Mark",
+        "CurrencyCode": "BAM",
+        "CapitalCity": "Sarajevo"
+    },
+    {
+        "Country": "Botswana",
+        "ISO_Code": "267",
+        "CountryCode2": "BW",
+        "CountryCode3": "BWA",
+        "CurrencyName": "Botswanan Pula",
+        "CurrencyCode": "BWP",
+        "CapitalCity": "Gaborone"
+    },
+    {
+        "Country": "Bouvet Island",
+        "ISO_Code": "47",
+        "CountryCode2": "BV",
+        "CountryCode3": "BVT",
+        "CurrencyName": "Norwegian Krone",
+        "CurrencyCode": "NOK"
+    },
+    {
+        "Country": "Brazil",
+        "ISO_Code": "55",
+        "CountryCode2": "BR",
+        "CountryCode3": "BRA",
+        "CurrencyName": "Brazilian Real",
+        "CurrencyCode": "BRL",
+        "CapitalCity": "Brasilia"
+    },
+    {
+        "Country": "British Indian Ocean Territory",
+        "ISO_Code": "246",
+        "CountryCode2": "IO",
+        "CountryCode3": "IOT",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD"
+    },
+    {
+        "Country": "British Virgin Islands",
+        "ISO_Code": "1284",
+        "CountryCode2": "VG",
+        "CountryCode3": "VGB",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Road Town"
+    },
+    {
+        "Country": "Brunei",
+        "ISO_Code": "673",
+        "CountryCode2": "BN",
+        "CountryCode3": "BRN",
+        "CurrencyName": "Brunei Dollar",
+        "CurrencyCode": "BND",
+        "CapitalCity": "Bandar Seri Begawan"
+    },
+    {
+        "Country": "Bulgaria",
+        "ISO_Code": "359",
+        "CountryCode2": "BG",
+        "CountryCode3": "BGR",
+        "CurrencyName": "Bulgarian Lev",
+        "CurrencyCode": "BGN",
+        "CapitalCity": "Sofia"
+    },
+    {
+        "Country": "Burkina Faso",
+        "ISO_Code": "226",
+        "CountryCode2": "BF",
+        "CountryCode3": "BFA",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF",
+        "CapitalCity": "Ouagadougou"
+    },
+    {
+        "Country": "Burundi",
+        "ISO_Code": "257",
+        "CountryCode2": "BI",
+        "CountryCode3": "BDI",
+        "CurrencyName": "Burundian Franc",
+        "CurrencyCode": "BIF",
+        "CapitalCity": "Bujumbura, Gitega"
+    },
+    {
+        "Country": "Cambodia",
+        "ISO_Code": "855",
+        "CountryCode2": "KH",
+        "CountryCode3": "KHM",
+        "CurrencyName": "Cambodian Riel",
+        "CurrencyCode": "KHR",
+        "CapitalCity": "Phnom Penh"
+    },
+    {
+        "Country": "Cameroon",
+        "ISO_Code": "237",
+        "CountryCode2": "CM",
+        "CountryCode3": "CMR",
+        "CurrencyName": "CFA Franc BEAC",
+        "CurrencyCode": "XAF",
+        "CapitalCity": "Yaounde"
+    },
+    {
+        "Country": "Canada",
+        "ISO_Code": "1",
+        "CountryCode2": "CA",
+        "CountryCode3": "CAN",
+        "CurrencyName": "Canadian Dollar",
+        "CurrencyCode": "CAD",
+        "CapitalCity": "Ottawa"
+    },
+    {
+        "Country": "Canary Islands",
+        "ISO_Code": "922",
+        "CountryCode2": "IC",
+        "CountryCode3": "IC",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR"
+    },
+    {
+        "Country": "Cape Verde",
+        "ISO_Code": "238",
+        "CountryCode2": "CV",
+        "CountryCode3": "CPV",
+        "CurrencyName": "Cape Verdean Escudo",
+        "CurrencyCode": "CVE"
+    },
+    {
+        "Country": "Cayman Islands",
+        "ISO_Code": "1345",
+        "CountryCode2": "KY",
+        "CountryCode3": "CYM",
+        "CurrencyName": "Cayman Islands Dollar",
+        "CurrencyCode": "KYD",
+        "CapitalCity": "George Town"
+    },
+    {
+        "Country": "Central African Republic",
+        "ISO_Code": "236",
+        "CountryCode2": "CF",
+        "CountryCode3": "CAF",
+        "CurrencyName": "CFA Franc BEAC",
+        "CurrencyCode": "XAF",
+        "CapitalCity": "Bangui"
+    },
+    {
+        "Country": "Chad",
+        "ISO_Code": "235",
+        "CountryCode2": "TD",
+        "CountryCode3": "TCD",
+        "CurrencyName": "CFA Franc BEAC",
+        "CurrencyCode": "XAF",
+        "CapitalCity": "N'Djamena"
+    },
+    {
+        "Country": "Chile",
+        "ISO_Code": "56",
+        "CountryCode2": "CL",
+        "CountryCode3": "CHL",
+        "CurrencyName": "Chilean Peso",
+        "CurrencyCode": "CLP",
+        "CapitalCity": "Santiago"
+    },
+    {
+        "Country": "China",
+        "ISO_Code": "86",
+        "CountryCode2": "CN",
+        "CountryCode3": "CHN",
+        "CurrencyName": "Chinese Yuan",
+        "CurrencyCode": "CNY",
+        "CapitalCity": "Beijing"
+    },
+    {
+        "Country": "Christmas Island",
+        "ISO_Code": "61",
+        "CountryCode2": "CX",
+        "CountryCode3": "CXR",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD",
+        "CapitalCity": "Flying Fish Cove"
+    },
+    {
+        "Country": "Clipperton Island",
+        "ISO_Code": "61",
+        "CountryCode2": "CC",
+        "CountryCode3": "CCK",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD"
+    },
+    {
+        "Country": "Colombia",
+        "ISO_Code": "57",
+        "CountryCode2": "CO",
+        "CountryCode3": "COL",
+        "CurrencyName": "Colombian Peso",
+        "CurrencyCode": "COP",
+        "CapitalCity": "Bogota"
+    },
+    {
+        "Country": "Comoros",
+        "ISO_Code": "269",
+        "CountryCode2": "KM",
+        "CountryCode3": "COM",
+        "CurrencyName": "Comorian Franc",
+        "CurrencyCode": "KMF",
+        "CapitalCity": "Moroni"
+    },
+    {
+        "Country": "Cook Islands",
+        "ISO_Code": "682",
+        "CountryCode2": "CK",
+        "CountryCode3": "COK",
+        "CurrencyName": "New Zealand Dollar",
+        "CurrencyCode": "NZD",
+        "CapitalCity": "Avarua"
+    },
+    {
+        "Country": "Costa Rica",
+        "ISO_Code": "506",
+        "CountryCode2": "CR",
+        "CountryCode3": "CRI",
+        "CurrencyName": "Costa Rican Colón",
+        "CurrencyCode": "CRC",
+        "CapitalCity": "San Jose"
+    },
+    {
+        "Country": "Croatia",
+        "ISO_Code": "385",
+        "CountryCode2": "HR",
+        "CountryCode3": "HRV",
+        "CurrencyName": "Croatian Kuna",
+        "CurrencyCode": "HRK",
+        "CapitalCity": "Zagreb"
+    },
+    {
+        "Country": "Cuba",
+        "ISO_Code": "53",
+        "CountryCode2": "CU",
+        "CountryCode3": "CUB",
+        "CurrencyName": "Cuban Peso",
+        "CurrencyCode": "CUP",
+        "CapitalCity": "Havana"
+    },
+    {
+        "Country": "Curacao",
+        "ISO_Code": "599",
+        "CountryCode2": "CW",
+        "CountryCode3": "CW",
+        "CurrencyName": "Netherlands Antillean Guilder",
+        "CurrencyCode": "ANG"
+    },
+    {
+        "Country": "Cyprus",
+        "ISO_Code": "357",
+        "CountryCode2": "CY",
+        "CountryCode3": "CYP",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Nicosia"
+    },
+    {
+        "Country": "Czech Republic",
+        "ISO_Code": "420",
+        "CountryCode2": "CZ",
+        "CountryCode3": "CZE",
+        "CurrencyName": "Czech Republic Koruna",
+        "CurrencyCode": "CZK"
+    },
+    {
+        "Country": "Democratic Republic of the Congo",
+        "ISO_Code": "243",
+        "CountryCode2": "CD",
+        "CountryCode3": "COD",
+        "CurrencyName": "Congolese Franc",
+        "CurrencyCode": "CDF"
+    },
+    {
+        "Country": "Denmark",
+        "ISO_Code": "45",
+        "CountryCode2": "DK",
+        "CountryCode3": "DNK",
+        "CurrencyName": "Danish Krone",
+        "CurrencyCode": "DKK",
+        "CapitalCity": "Copenhagen"
+    },
+    {
+        "Country": "Djibouti",
+        "ISO_Code": "253",
+        "CountryCode2": "DJ",
+        "CountryCode3": "DJI",
+        "CurrencyName": "Djiboutian Franc",
+        "CurrencyCode": "DJF",
+        "CapitalCity": "Djibouti"
+    },
+    {
+        "Country": "Dominica",
+        "ISO_Code": "1767",
+        "CountryCode2": "DM",
+        "CountryCode3": "DMA",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "Roseau"
+    },
+    {
+        "Country": "Dominican Republic",
+        "ISO_Code": "1809, 1829, 1849",
+        "CountryCode2": "DO",
+        "CountryCode3": "DOM",
+        "CurrencyName": "Dominican Peso",
+        "CurrencyCode": "DOP",
+        "CapitalCity": "Santo Domingo"
+    },
+    {
+        "Country": "East Timor",
+        "ISO_Code": "670",
+        "CountryCode2": "TL",
+        "CountryCode3": "TLS",
+        "CurrencyName": "Indonesian Rupiah",
+        "CurrencyCode": "IDR"
+    },
+    {
+        "Country": "Ecuador",
+        "ISO_Code": "593",
+        "CountryCode2": "EC",
+        "CountryCode3": "ECU",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Quito"
+    },
+    {
+        "Country": "Egypt",
+        "ISO_Code": "20",
+        "CountryCode2": "EG",
+        "CountryCode3": "EGY",
+        "CurrencyName": "Egyptian Pound",
+        "CurrencyCode": "EGP",
+        "CapitalCity": "Cairo"
+    },
+    {
+        "Country": "El Salvador",
+        "ISO_Code": "503",
+        "CountryCode2": "SV",
+        "CountryCode3": "SLV",
+        "CurrencyName": "Salvadoran Colón",
+        "CurrencyCode": "SVC",
+        "CapitalCity": "San Salvador"
+    },
+    {
+        "Country": "Equatorial Guinea",
+        "ISO_Code": "240",
+        "CountryCode2": "GQ",
+        "CountryCode3": "GNQ",
+        "CurrencyName": "CFA Franc BEAC",
+        "CurrencyCode": "XAF",
+        "CapitalCity": "Malabo"
+    },
+    {
+        "Country": "Eritrea",
+        "ISO_Code": "291",
+        "CountryCode2": "ER",
+        "CountryCode3": "ERI",
+        "CurrencyName": "Eritrean Nakfa",
+        "CurrencyCode": "ERN",
+        "CapitalCity": "Asmara"
+    },
+    {
+        "Country": "Estonia",
+        "ISO_Code": "372",
+        "CountryCode2": "EE",
+        "CountryCode3": "EST",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Tallinn"
+    },
+    {
+        "Country": "Ethiopia",
+        "ISO_Code": "251",
+        "CountryCode2": "ET",
+        "CountryCode3": "ETH",
+        "CurrencyName": "Ethiopian Birr",
+        "CurrencyCode": "ETB",
+        "CapitalCity": "Addis Ababa"
+    },
+    {
+        "Country": "Falkland Islands",
+        "ISO_Code": "500",
+        "CountryCode2": "FK",
+        "CountryCode3": "FLK",
+        "CurrencyName": "Falkland Islands Pound",
+        "CurrencyCode": "FKP"
+    },
+    {
+        "Country": "Faroe Islands",
+        "ISO_Code": "298",
+        "CountryCode2": "FO",
+        "CountryCode3": "FRO",
+        "CurrencyName": "Danish Krone",
+        "CurrencyCode": "DKK",
+        "CapitalCity": "Torshavn"
+    },
+    {
+        "Country": "Fiji",
+        "ISO_Code": "679",
+        "CountryCode2": "FJ",
+        "CountryCode3": "FJI",
+        "CurrencyName": "Fijian Dollar",
+        "CurrencyCode": "FJD",
+        "CapitalCity": "Suva"
+    },
+    {
+        "Country": "Finland",
+        "ISO_Code": "358",
+        "CountryCode2": "FI",
+        "CountryCode3": "FIN",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Helsinki"
+    },
+    {
+        "Country": "France",
+        "ISO_Code": "33",
+        "CountryCode2": "FR",
+        "CountryCode3": "FRA",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Paris"
+    },
+    {
+        "Country": "French Guiana",
+        "ISO_Code": "594",
+        "CountryCode2": "GF",
+        "CountryCode3": "GUF",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Cayenne"
+    },
+    {
+        "Country": "French Polynesia",
+        "ISO_Code": "689",
+        "CountryCode2": "PF",
+        "CountryCode3": "PYF",
+        "CurrencyName": "CFP Franc",
+        "CurrencyCode": "XPF",
+        "CapitalCity": "Papeete"
+    },
+    {
+        "Country": "French Southern Territories",
+        "ISO_Code": "262",
+        "CountryCode2": "TF",
+        "CountryCode3": "ATF",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR"
+    },
+    {
+        "Country": "Gabon",
+        "ISO_Code": "241",
+        "CountryCode2": "GA",
+        "CountryCode3": "GAB",
+        "CurrencyName": "CFA Franc BEAC",
+        "CurrencyCode": "XAF",
+        "CapitalCity": "Libreville"
+    },
+    {
+        "Country": "Gambia",
+        "ISO_Code": "220",
+        "CountryCode2": "GM",
+        "CountryCode3": "GMB",
+        "CurrencyName": "Gambian Dalasi",
+        "CurrencyCode": "GMD"
+    },
+    {
+        "Country": "Georgia",
+        "ISO_Code": "995",
+        "CountryCode2": "GE",
+        "CountryCode3": "GEO",
+        "CurrencyName": "Georgian Lari",
+        "CurrencyCode": "GEL",
+        "CapitalCity": "Tbilisi"
+    },
+    {
+        "Country": "Germany",
+        "ISO_Code": "49",
+        "CountryCode2": "DE",
+        "CountryCode3": "DEU",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Berlin"
+    },
+    {
+        "Country": "Ghana",
+        "ISO_Code": "233",
+        "CountryCode2": "GH",
+        "CountryCode3": "GHA",
+        "CurrencyName": "Ghanaian Cedi",
+        "CurrencyCode": "GHS",
+        "CapitalCity": "Accra"
+    },
+    {
+        "Country": "Gibraltar",
+        "ISO_Code": "233",
+        "CountryCode2": "GI",
+        "CountryCode3": "GIB",
+        "CurrencyName": "Gibraltar Pound",
+        "CurrencyCode": "GIP",
+        "CapitalCity": "Gibraltar"
+    },
+    {
+        "Country": "Greece",
+        "ISO_Code": "350",
+        "CountryCode2": "GR",
+        "CountryCode3": "GRC",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Athens"
+    },
+    {
+        "Country": "Greenland",
+        "ISO_Code": "30",
+        "CountryCode2": "GL",
+        "CountryCode3": "GRL",
+        "CurrencyName": "Danish Krone",
+        "CurrencyCode": "DKK",
+        "CapitalCity": "Nuuk"
+    },
+    {
+        "Country": "Grenada",
+        "ISO_Code": "299",
+        "CountryCode2": "GD",
+        "CountryCode3": "GRD",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "Saint George's"
+    },
+    {
+        "Country": "Guadeloupe",
+        "ISO_Code": "1473",
+        "CountryCode2": "GP",
+        "CountryCode3": "GLP",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Basse-Terre"
+    },
+    {
+        "Country": "Guam",
+        "ISO_Code": "1671",
+        "CountryCode2": "GU",
+        "CountryCode3": "GUM",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Hagta"
+    },
+    {
+        "Country": "Guatemala",
+        "ISO_Code": "502",
+        "CountryCode2": "GT",
+        "CountryCode3": "GTM",
+        "CurrencyName": "Guatemalan Quetzal",
+        "CurrencyCode": "GTQ",
+        "CapitalCity": "Guatemala City"
+    },
+    {
+        "Country": "Guernsey",
+        "ISO_Code": "441481",
+        "CountryCode2": "GG",
+        "CountryCode3": "GGY",
+        "CurrencyName": "Pound Sterling",
+        "CurrencyCode": "GBP"
+    },
+    {
+        "Country": "Guinea",
+        "ISO_Code": "224",
+        "CountryCode2": "GN",
+        "CountryCode3": "GIN",
+        "CurrencyName": "Guinean Franc",
+        "CurrencyCode": "GNF",
+        "CapitalCity": "Conakry"
+    },
+    {
+        "Country": "Guinea-Bissau",
+        "ISO_Code": "245",
+        "CountryCode2": "GW",
+        "CountryCode3": "GNB",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF",
+        "CapitalCity": "Bissau"
+    },
+    {
+        "Country": "Guyana",
+        "ISO_Code": "592",
+        "CountryCode2": "GY",
+        "CountryCode3": "GUY",
+        "CurrencyName": "Guyanaese Dollar",
+        "CurrencyCode": "GYD",
+        "CapitalCity": "Georgetown"
+    },
+    {
+        "Country": "Haiti",
+        "ISO_Code": "509",
+        "CountryCode2": "HT",
+        "CountryCode3": "HTI",
+        "CurrencyName": "Haitian Gourde",
+        "CurrencyCode": "HTG",
+        "CapitalCity": "Port-au-Prince"
+    },
+    {
+        "Country": "Heard Island and McDonald Islands",
+        "ISO_Code": "504",
+        "CountryCode2": "HM",
+        "CountryCode3": "HMD",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD"
+    },
+    {
+        "Country": "Honduras",
+        "ISO_Code": "340",
+        "CountryCode2": "HN",
+        "CountryCode3": "HND",
+        "CurrencyName": "Honduran Lempira",
+        "CurrencyCode": "HNL",
+        "CapitalCity": "Tegucigalpa"
+    },
+    {
+        "Country": "Hong Kong",
+        "ISO_Code": "852",
+        "CountryCode2": "HK",
+        "CountryCode3": "HKG",
+        "CurrencyName": "Hong Kong Dollar",
+        "CurrencyCode": "HKD",
+        "CapitalCity": "Hong Kong"
+    },
+    {
+        "Country": "Hungary",
+        "ISO_Code": "36",
+        "CountryCode2": "HU",
+        "CountryCode3": "HUN",
+        "CurrencyName": "Hungarian Forint",
+        "CurrencyCode": "HUF",
+        "CapitalCity": "Budapest"
+    },
+    {
+        "Country": "Iceland",
+        "ISO_Code": "354",
+        "CountryCode2": "IS",
+        "CountryCode3": "ISL",
+        "CurrencyName": "Icelandic Króna",
+        "CurrencyCode": "ISK",
+        "CapitalCity": "Reykjavik"
+    },
+    {
+        "Country": "India",
+        "ISO_Code": "91",
+        "CountryCode2": "IN",
+        "CountryCode3": "IND",
+        "CurrencyName": "Indian Rupee",
+        "CurrencyCode": "INR",
+        "CapitalCity": "New Delhi"
+    },
+    {
+        "Country": "Indonesia",
+        "ISO_Code": "62",
+        "CountryCode2": "ID",
+        "CountryCode3": "IDN",
+        "CurrencyName": "Indonesian Rupiah",
+        "CurrencyCode": "IDR",
+        "CapitalCity": "Jakarta"
+    },
+    {
+        "Country": "Iran",
+        "ISO_Code": "98",
+        "CountryCode2": "IR",
+        "CountryCode3": "IRN",
+        "CurrencyName": "Iranian Rial",
+        "CurrencyCode": "IRR",
+        "CapitalCity": "Tehran"
+    },
+    {
+        "Country": "Iraq",
+        "ISO_Code": "964",
+        "CountryCode2": "IQ",
+        "CountryCode3": "IRQ",
+        "CurrencyName": "Iraqi Dinar",
+        "CurrencyCode": "IQD",
+        "CapitalCity": "Baghdad"
+    },
+    {
+        "Country": "Ireland",
+        "ISO_Code": "353",
+        "CountryCode2": "IE",
+        "CountryCode3": "IRL",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Dublin"
+    },
+    {
+        "Country": "Isle Of Man",
+        "ISO_Code": "441624",
+        "CountryCode2": "IM",
+        "CountryCode3": "IMN",
+        "CurrencyName": "Pound Sterling",
+        "CurrencyCode": "GBP",
+        "CapitalCity": "Douglas"
+    },
+    {
+        "Country": "Israel",
+        "ISO_Code": "972",
+        "CountryCode2": "IL",
+        "CountryCode3": "ISR",
+        "CurrencyName": "Israeli New Sheqel",
+        "CurrencyCode": "ILS",
+        "CapitalCity": "Jerusalem"
+    },
+    {
+        "Country": "Italy",
+        "ISO_Code": "39",
+        "CountryCode2": "IT",
+        "CountryCode3": "ITA",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Rome"
+    },
+    {
+        "Country": "Ivory Coast",
+        "ISO_Code": "225",
+        "CountryCode2": "CI",
+        "CountryCode3": " CIV",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF"
+    },
+    {
+        "Country": "Jamaica",
+        "ISO_Code": "1876",
+        "CountryCode2": "JM",
+        "CountryCode3": "JAM",
+        "CurrencyName": "Jamaican Dollar",
+        "CurrencyCode": "JMD",
+        "CapitalCity": "Kingston"
+    },
+    {
+        "Country": "Japan",
+        "ISO_Code": "81",
+        "CountryCode2": "JP",
+        "CountryCode3": "JPN",
+        "CurrencyName": "Japanese Yen",
+        "CurrencyCode": "JPY",
+        "CapitalCity": "Tokyo"
+    },
+    {
+        "Country": "Jersey",
+        "ISO_Code": "441534",
+        "CountryCode2": "JE",
+        "CountryCode3": "JEY",
+        "CurrencyName": "Pound Sterling",
+        "CurrencyCode": "GBP",
+        "CapitalCity": "Saint Helier"
+    },
+    {
+        "Country": "Jordan",
+        "ISO_Code": "962",
+        "CountryCode2": "JO",
+        "CountryCode3": "JOR",
+        "CurrencyName": "Jordanian Dinar",
+        "CurrencyCode": "JOD",
+        "CapitalCity": "Amman"
+    },
+    {
+        "Country": "Kazakhstan",
+        "ISO_Code": "7",
+        "CountryCode2": "KZ",
+        "CountryCode3": "KAZ",
+        "CurrencyName": "Kazakhstani Tenge",
+        "CurrencyCode": "KZT",
+        "CapitalCity": "Nur-Sultan"
+    },
+    {
+        "Country": "Kenya",
+        "ISO_Code": "254",
+        "CountryCode2": "KE",
+        "CountryCode3": "KEN",
+        "CurrencyName": "Kenyan Shilling",
+        "CurrencyCode": "KES",
+        "CapitalCity": "Nairobi"
+    },
+    {
+        "Country": "Kiribati",
+        "ISO_Code": "686",
+        "CountryCode2": "KI",
+        "CountryCode3": "KIR",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD",
+        "CapitalCity": "Tarawa"
+    },
+    {
+        "Country": "Kosovo",
+        "ISO_Code": "383",
+        "CountryCode2": "XK",
+        "CountryCode3": "XKX",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Pristina"
+    },
+    {
+        "Country": "Kuwait",
+        "ISO_Code": "965",
+        "CountryCode2": "KW",
+        "CountryCode3": "KWT",
+        "CurrencyName": "Kuwaiti Dinar",
+        "CurrencyCode": "KWD",
+        "CapitalCity": "Kuwait City"
+    },
+    {
+        "Country": "Kyrgyzstan",
+        "ISO_Code": "996",
+        "CountryCode2": "KG",
+        "CountryCode3": "KGZ",
+        "CurrencyName": "Kyrgystani Som",
+        "CurrencyCode": "KGS",
+        "CapitalCity": "Bishkek"
+    },
+    {
+        "Country": "Laos",
+        "ISO_Code": "856",
+        "CountryCode2": "LA",
+        "CountryCode3": "LAO",
+        "CurrencyName": "Laotian Kip",
+        "CurrencyCode": "LAK",
+        "CapitalCity": "Vientiane"
+    },
+    {
+        "Country": "Latvia",
+        "ISO_Code": "371",
+        "CountryCode2": "LV",
+        "CountryCode3": "LVA",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Riga"
+    },
+    {
+        "Country": "Lebanon",
+        "ISO_Code": "961",
+        "CountryCode2": "LB",
+        "CountryCode3": "LBN",
+        "CurrencyName": "Lebanese Pound",
+        "CurrencyCode": "LBP",
+        "CapitalCity": "Beirut"
+    },
+    {
+        "Country": "Lesotho",
+        "ISO_Code": "266",
+        "CountryCode2": "LS",
+        "CountryCode3": "LSO",
+        "CurrencyName": "Lesotho Loti",
+        "CurrencyCode": "LSL",
+        "CapitalCity": "Maseru"
+    },
+    {
+        "Country": "Liberia",
+        "ISO_Code": "231",
+        "CountryCode2": "LR",
+        "CountryCode3": "LBR",
+        "CurrencyName": "Liberian Dollar",
+        "CurrencyCode": "LRD",
+        "CapitalCity": "Monrovia"
+    },
+    {
+        "Country": "Libya",
+        "ISO_Code": "218",
+        "CountryCode2": "LY",
+        "CountryCode3": "LBY",
+        "CurrencyName": "Libyan Dinar",
+        "CurrencyCode": "LYD",
+        "CapitalCity": "Tripoli"
+    },
+    {
+        "Country": "Liechtenstein",
+        "ISO_Code": "423",
+        "CountryCode2": "LI",
+        "CountryCode3": "LIE",
+        "CurrencyName": "Swiss Franc",
+        "CurrencyCode": "CHF",
+        "CapitalCity": "Vaduz"
+    },
+    {
+        "Country": "Lithuania",
+        "ISO_Code": "370",
+        "CountryCode2": "LT",
+        "CountryCode3": "LTU",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Vilnius"
+    },
+    {
+        "Country": "Luxembourg",
+        "ISO_Code": "352",
+        "CountryCode2": "LU",
+        "CountryCode3": "LUX",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Luxembourg"
+    },
+    {
+        "Country": "Macau",
+        "ISO_Code": "853",
+        "CountryCode2": "MO",
+        "CountryCode3": "MAC",
+        "CurrencyName": "Macanese Pataca",
+        "CurrencyCode": "MOP"
+    },
+    {
+        "Country": "Macedonia",
+        "ISO_Code": "389",
+        "CountryCode2": "MK",
+        "CountryCode3": "MKD",
+        "CurrencyName": "Macedonian Denar",
+        "CurrencyCode": "MKD",
+        "CapitalCity": "Skopje"
+    },
+    {
+        "Country": "Madagascar",
+        "ISO_Code": "261",
+        "CountryCode2": "MG",
+        "CountryCode3": "MDG",
+        "CurrencyName": "Malagasy Ariary",
+        "CurrencyCode": "MGA",
+        "CapitalCity": "Antananarivo"
+    },
+    {
+        "Country": "Malawi",
+        "ISO_Code": "265",
+        "CountryCode2": "MW",
+        "CountryCode3": "MWI",
+        "CurrencyName": "Malawian Kwacha",
+        "CurrencyCode": "MWK",
+        "CapitalCity": "Lilongwe"
+    },
+    {
+        "Country": "Malaysia",
+        "ISO_Code": "60",
+        "CountryCode2": "MY",
+        "CountryCode3": "MYS",
+        "CurrencyName": "Malaysian Ringgit",
+        "CurrencyCode": "MYR",
+        "CapitalCity": "Kuala Lumpur"
+    },
+    {
+        "Country": "Maldives",
+        "ISO_Code": "960",
+        "CountryCode2": "MV",
+        "CountryCode3": "MDV",
+        "CurrencyName": "Maldivian Rufiyaa",
+        "CurrencyCode": "MVR",
+        "CapitalCity": "Male"
+    },
+    {
+        "Country": "Mali",
+        "ISO_Code": "223",
+        "CountryCode2": "ML",
+        "CountryCode3": "MLI",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF",
+        "CapitalCity": "Bamako"
+    },
+    {
+        "Country": "Malta",
+        "ISO_Code": "356",
+        "CountryCode2": "MT",
+        "CountryCode3": "MLT",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Valletta"
+    },
+    {
+        "Country": "Marshall Islands",
+        "ISO_Code": "692",
+        "CountryCode2": "MH",
+        "CountryCode3": "MHL",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Majuro"
+    },
+    {
+        "Country": "Martinique",
+        "ISO_Code": "596",
+        "CountryCode2": "MQ",
+        "CountryCode3": "MTQ",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Fort-de-France"
+    },
+    {
+        "Country": "Mauritania",
+        "ISO_Code": "222",
+        "CountryCode2": "MR",
+        "CountryCode3": "MRT",
+        "CurrencyName": "Ouguiya",
+        "CurrencyCode": "MRU",
+        "CapitalCity": "Nouakchott"
+    },
+    {
+        "Country": "Mauritius",
+        "ISO_Code": "230",
+        "CountryCode2": "MU",
+        "CountryCode3": "MUS",
+        "CurrencyName": "Mauritian Rupee",
+        "CurrencyCode": "MUR",
+        "CapitalCity": "Port Louis"
+    },
+    {
+        "Country": "Mayotte",
+        "ISO_Code": "262",
+        "CountryCode2": "YT",
+        "CountryCode3": "MYT",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Mamoudzou"
+    },
+    {
+        "Country": "Mexico",
+        "ISO_Code": "52",
+        "CountryCode2": "MX",
+        "CountryCode3": "MEX",
+        "CurrencyName": "Mexican Peso",
+        "CurrencyCode": "MXN",
+        "CapitalCity": "Mexico City"
+    },
+    {
+        "Country": "Micronesia",
+        "ISO_Code": "691",
+        "CountryCode2": "FM",
+        "CountryCode3": "FSM",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD"
+    },
+    {
+        "Country": "Moldova",
+        "ISO_Code": "373",
+        "CountryCode2": "MD",
+        "CountryCode3": "MDA",
+        "CurrencyName": "Moldovan Leu",
+        "CurrencyCode": "MDL",
+        "CapitalCity": "Chisinau"
+    },
+    {
+        "Country": "Monaco",
+        "ISO_Code": "377",
+        "CountryCode2": "MC",
+        "CountryCode3": "MCO",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Monaco"
+    },
+    {
+        "Country": "Mongolia",
+        "ISO_Code": "976",
+        "CountryCode2": "MN",
+        "CountryCode3": "MNG",
+        "CurrencyName": "Mongolian Tugrik",
+        "CurrencyCode": "MNT",
+        "CapitalCity": "Ulaanbaatar"
+    },
+    {
+        "Country": "Montenegro",
+        "ISO_Code": "382",
+        "CountryCode2": "ME",
+        "CountryCode3": "MNE",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Podgorica"
+    },
+    {
+        "Country": "Montserrat",
+        "ISO_Code": "1664",
+        "CountryCode2": "MS",
+        "CountryCode3": "MSR",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "Brades"
+    },
+    {
+        "Country": "Morocco",
+        "ISO_Code": "212",
+        "CountryCode2": "MA",
+        "CountryCode3": "MAR",
+        "CurrencyName": "Moroccan Dirham",
+        "CurrencyCode": "MAD",
+        "CapitalCity": "Rabat"
+    },
+    {
+        "Country": "Mozambique",
+        "ISO_Code": "258",
+        "CountryCode2": "MZ",
+        "CountryCode3": "MOZ",
+        "CurrencyName": "Mozambican Metical",
+        "CurrencyCode": "MZN",
+        "CapitalCity": "Maputo"
+    },
+    {
+        "Country": "Myanmar",
+        "ISO_Code": "95",
+        "CountryCode2": "MM",
+        "CountryCode3": "MMR",
+        "CurrencyName": "Myanma Kyat",
+        "CurrencyCode": "MMK",
+        "CapitalCity": "Rangoon"
+    },
+    {
+        "Country": "Namibia",
+        "ISO_Code": "264",
+        "CountryCode2": "NA",
+        "CountryCode3": "NAM",
+        "CurrencyName": "Namibian Dollar",
+        "CurrencyCode": "NAD",
+        "CapitalCity": "Windhoek"
+    },
+    {
+        "Country": "Nauru",
+        "ISO_Code": "674",
+        "CountryCode2": "NR",
+        "CountryCode3": "NRU",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD",
+        "CapitalCity": "Yaren"
+    },
+    {
+        "Country": "Nepal",
+        "ISO_Code": "977",
+        "CountryCode2": "NP",
+        "CountryCode3": "NPL",
+        "CurrencyName": "Nepalese Rupee",
+        "CurrencyCode": "NPR",
+        "CapitalCity": "Kathmandu"
+    },
+    {
+        "Country": "Netherlands",
+        "ISO_Code": "31",
+        "CountryCode2": "NL",
+        "CountryCode3": "NLD",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Amsterdam"
+    },
+    {
+        "Country": "Netherlands Antilles",
+        "ISO_Code": "599",
+        "CountryCode2": "AN",
+        "CountryCode3": "ANT",
+        "CurrencyName": "Netherlands Antillean Guilder",
+        "CurrencyCode": "ANG"
+    },
+    {
+        "Country": "New Caledonia",
+        "ISO_Code": "687",
+        "CountryCode2": "NC",
+        "CountryCode3": "NCL",
+        "CurrencyName": "CFP Franc",
+        "CurrencyCode": "XPF",
+        "CapitalCity": "Noumea"
+    },
+    {
+        "Country": "New Zealand",
+        "ISO_Code": "64",
+        "CountryCode2": "NZ",
+        "CountryCode3": "NZL",
+        "CurrencyName": "New Zealand Dollar",
+        "CurrencyCode": "NZD",
+        "CapitalCity": "Wellington"
+    },
+    {
+        "Country": "Nicaragua",
+        "ISO_Code": "505",
+        "CountryCode2": "NI",
+        "CountryCode3": "NIC",
+        "CurrencyName": "Nicaraguan Córdoba",
+        "CurrencyCode": "NIO",
+        "CapitalCity": "Managua"
+    },
+    {
+        "Country": "Niger",
+        "ISO_Code": "227",
+        "CountryCode2": "NE",
+        "CountryCode3": "NER",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF",
+        "CapitalCity": "Niamey"
+    },
+    {
+        "Country": "Nigeria",
+        "ISO_Code": "234",
+        "CountryCode2": "NG",
+        "CountryCode3": "NGA",
+        "CurrencyName": "Nigerian Naira",
+        "CurrencyCode": "NGN",
+        "CapitalCity": "Abuja"
+    },
+    {
+        "Country": "Niue",
+        "ISO_Code": "683",
+        "CountryCode2": "NU",
+        "CountryCode3": "NIU",
+        "CurrencyName": "New Zealand Dollar",
+        "CurrencyCode": "NZD",
+        "CapitalCity": "Alofi"
+    },
+    {
+        "Country": "Norfolk Island",
+        "ISO_Code": "672",
+        "CountryCode2": "NF",
+        "CountryCode3": "NFK",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD",
+        "CapitalCity": "Kingston"
+    },
+    {
+        "Country": "North Korea",
+        "ISO_Code": "850",
+        "CountryCode2": "KP",
+        "CountryCode3": "PRK",
+        "CurrencyName": "North Korean Won",
+        "CurrencyCode": "KPW",
+        "CapitalCity": "Pyongyang"
+    },
+    {
+        "Country": "Northern Mariana Islands",
+        "ISO_Code": "1670",
+        "CountryCode2": "MP",
+        "CountryCode3": "MNP",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Capitol Hill"
+    },
+    {
+        "Country": "Norway",
+        "ISO_Code": "47",
+        "CountryCode2": "NO",
+        "CountryCode3": "NOR",
+        "CurrencyName": "Norwegian Krone",
+        "CurrencyCode": "NOK",
+        "CapitalCity": "Oslo"
+    },
+    {
+        "Country": "Oman",
+        "ISO_Code": "968",
+        "CountryCode2": "OM",
+        "CountryCode3": "OMN",
+        "CurrencyName": "Omani Rial",
+        "CurrencyCode": "OMR",
+        "CapitalCity": "Muscat"
+    },
+    {
+        "Country": "Pakistan",
+        "ISO_Code": "92",
+        "CountryCode2": "PK",
+        "CountryCode3": "PAK",
+        "CurrencyName": "Pakistani Rupee",
+        "CurrencyCode": "PKR",
+        "CapitalCity": "Islamabad"
+    },
+    {
+        "Country": "Palau",
+        "ISO_Code": "680",
+        "CountryCode2": "PW",
+        "CountryCode3": "PLW",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Ngerulmud"
+    },
+    {
+        "Country": "Palestine",
+        "ISO_Code": "970",
+        "CountryCode2": "PS",
+        "CountryCode3": "PSE",
+        "CurrencyName": "Jordanian Dinar",
+        "CurrencyCode": "JOD"
+    },
+    {
+        "Country": "Panama",
+        "ISO_Code": "507",
+        "CountryCode2": "PA",
+        "CountryCode3": "PAN",
+        "CurrencyName": "Panamanian Balboa",
+        "CurrencyCode": "PAB",
+        "CapitalCity": "Panama City"
+    },
+    {
+        "Country": "Papua New Guinea",
+        "ISO_Code": "675",
+        "CountryCode2": "PG",
+        "CountryCode3": "PNG",
+        "CurrencyName": "Papua New Guinean Kina",
+        "CurrencyCode": "PGK",
+        "CapitalCity": "Port Moresby"
+    },
+    {
+        "Country": "Paraguay",
+        "ISO_Code": "595",
+        "CountryCode2": "PY",
+        "CountryCode3": "PRY",
+        "CurrencyName": "Paraguayan Guarani",
+        "CurrencyCode": "PYG",
+        "CapitalCity": "Asuncion"
+    },
+    {
+        "Country": "Peru",
+        "ISO_Code": "51",
+        "CountryCode2": "PE",
+        "CountryCode3": "PER",
+        "CurrencyName": "Peruvian Nuevo Sol",
+        "CurrencyCode": "PEN",
+        "CapitalCity": "Lima"
+    },
+    {
+        "Country": "Philippines",
+        "ISO_Code": "63",
+        "CountryCode2": "PH",
+        "CountryCode3": "PHL",
+        "CurrencyName": "Philippine Peso",
+        "CurrencyCode": "PHP",
+        "CapitalCity": "Manila"
+    },
+    {
+        "Country": "Pitcairn",
+        "ISO_Code": "64",
+        "CountryCode2": "PN",
+        "CountryCode3": "PCN",
+        "CurrencyName": "New Zealand Dollar",
+        "CurrencyCode": "NZD"
+    },
+    {
+        "Country": "Poland",
+        "ISO_Code": "48",
+        "CountryCode2": "PL",
+        "CountryCode3": "POL",
+        "CurrencyName": "Polish Zloty",
+        "CurrencyCode": "PLN",
+        "CapitalCity": "Warsaw"
+    },
+    {
+        "Country": "Portugal",
+        "ISO_Code": "351",
+        "CountryCode2": "PT",
+        "CountryCode3": "PRT",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Lisbon"
+    },
+    {
+        "Country": "Puerto Rico",
+        "ISO_Code": "1787, 1939",
+        "CountryCode2": "PR",
+        "CountryCode3": "PRI",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "San Juan"
+    },
+    {
+        "Country": "Qatar",
+        "ISO_Code": "974",
+        "CountryCode2": "QA",
+        "CountryCode3": "QAT",
+        "CurrencyName": "Qatari Rial",
+        "CurrencyCode": "QAR",
+        "CapitalCity": "Doha"
+    },
+    {
+        "Country": "Republic of the Congo",
+        "ISO_Code": "242",
+        "CountryCode2": "CG",
+        "CountryCode3": "COG",
+        "CurrencyName": "Congolese Franc",
+        "CurrencyCode": "CDF"
+    },
+    {
+        "Country": "Reunion",
+        "ISO_Code": "262",
+        "CountryCode2": "RE",
+        "CountryCode3": "REU",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Saint-Denis"
+    },
+    {
+        "Country": "Romania",
+        "ISO_Code": "40",
+        "CountryCode2": "RO",
+        "CountryCode3": "ROU",
+        "CurrencyName": "Romanian Leu",
+        "CurrencyCode": "RON",
+        "CapitalCity": "Bucharest"
+    },
+    {
+        "Country": "Russia",
+        "ISO_Code": "7",
+        "CountryCode2": "RU",
+        "CountryCode3": "RUS",
+        "CurrencyName": "Russian Ruble",
+        "CurrencyCode": "RUB",
+        "CapitalCity": "Moscow"
+    },
+    {
+        "Country": "Rwanda",
+        "ISO_Code": "250",
+        "CountryCode2": "RW",
+        "CountryCode3": "RWA",
+        "CurrencyName": "Rwandan Franc",
+        "CurrencyCode": "RWF",
+        "CapitalCity": "Kigali"
+    },
+    {
+        "Country": "Saint BarthÉLemy",
+        "ISO_Code": "590",
+        "CountryCode2": "BL",
+        "CountryCode3": "BLM",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR"
+    },
+    {
+        "Country": "Saint Helena",
+        "ISO_Code": "290",
+        "CountryCode2": "SH",
+        "CountryCode3": "SHN",
+        "CurrencyName": "Pound Sterling",
+        "CurrencyCode": "GBP"
+    },
+    {
+        "Country": "Saint Kitts and Nevis",
+        "ISO_Code": "1869",
+        "CountryCode2": "KN",
+        "CountryCode3": "KNA",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "Basseterre"
+    },
+    {
+        "Country": "Saint Lucia",
+        "ISO_Code": "1758",
+        "CountryCode2": "LC",
+        "CountryCode3": "LCA",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "Castries"
+    },
+    {
+        "Country": "Saint Martin (French Part)",
+        "ISO_Code": "590",
+        "CountryCode2": "MF",
+        "CountryCode3": "MAF",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR"
+    },
+    {
+        "Country": "Saint Pierre and Miquelon",
+        "ISO_Code": "508",
+        "CountryCode2": "PM",
+        "CountryCode3": "SPM",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Saint-Pierre"
+    },
+    {
+        "Country": "Saint Vincent and the Grenadines",
+        "ISO_Code": "1784",
+        "CountryCode2": "VC",
+        "CountryCode3": "VCT",
+        "CurrencyName": "East Caribbean Dollar",
+        "CurrencyCode": "XCD",
+        "CapitalCity": "Kingstown"
+    },
+    {
+        "Country": "Samoa",
+        "ISO_Code": "685",
+        "CountryCode2": "WS",
+        "CountryCode3": "WSM",
+        "CurrencyName": "Samoan Tala",
+        "CurrencyCode": "WST",
+        "CapitalCity": "Apia"
+    },
+    {
+        "Country": "San Marino",
+        "ISO_Code": "378",
+        "CountryCode2": "SM",
+        "CountryCode3": "SMR",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "San Marino"
+    },
+    {
+        "Country": "Sao Tome and Principe",
+        "ISO_Code": "239",
+        "CountryCode2": "ST",
+        "CountryCode3": "STP",
+        "CurrencyName": "Dobra",
+        "CurrencyCode": "STN",
+        "CapitalCity": "Sao Tome"
+    },
+    {
+        "Country": "Saudi Arabia",
+        "ISO_Code": "966",
+        "CountryCode2": "SA",
+        "CountryCode3": "SAU",
+        "CurrencyName": "Saudi Riyal",
+        "CurrencyCode": "SAR",
+        "CapitalCity": "Riyadh"
+    },
+    {
+        "Country": "Senegal",
+        "ISO_Code": "221",
+        "CountryCode2": "SN",
+        "CountryCode3": "SEN",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF",
+        "CapitalCity": "Dakar"
+    },
+    {
+        "Country": "Serbia",
+        "ISO_Code": "381",
+        "CountryCode2": "RS",
+        "CountryCode3": "SRB",
+        "CurrencyName": "Serbian Dinar",
+        "CurrencyCode": "RSD",
+        "CapitalCity": "Belgrade"
+    },
+    {
+        "Country": "Serbia and Montenegro",
+        "ISO_Code": "381",
+        "CountryCode2": "CS",
+        "CountryCode3": "SCG",
+        "CurrencyName": "Serbian Dinar",
+        "CurrencyCode": "RSD"
+    },
+    {
+        "Country": "Seychelles",
+        "ISO_Code": "248",
+        "CountryCode2": "SC",
+        "CountryCode3": "SYC",
+        "CurrencyName": "Seychellois Rupee",
+        "CurrencyCode": "SCR",
+        "CapitalCity": "Victoria"
+    },
+    {
+        "Country": "Sierra Leone",
+        "ISO_Code": "232",
+        "CountryCode2": "SL",
+        "CountryCode3": "SLE",
+        "CurrencyName": "Sierra Leonean Leone",
+        "CurrencyCode": "SLL",
+        "CapitalCity": "Freetown"
+    },
+    {
+        "Country": "Singapore",
+        "ISO_Code": "65",
+        "CountryCode2": "SG",
+        "CountryCode3": "SGP",
+        "CurrencyName": "Singapore Dollar",
+        "CurrencyCode": "SGD",
+        "CapitalCity": "Singapore"
+    },
+    {
+        "Country": "Sint Maarten (Dutch Part)",
+        "ISO_Code": "1721",
+        "CountryCode2": "SX",
+        "CountryCode3": "SXM",
+        "CurrencyName": "Netherlands Antillean Guilder",
+        "CurrencyCode": "ANG"
+    },
+    {
+        "Country": "Slovakia",
+        "ISO_Code": "421",
+        "CountryCode2": "SK",
+        "CountryCode3": "SVK",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Bratislava"
+    },
+    {
+        "Country": "Slovenia",
+        "ISO_Code": "386",
+        "CountryCode2": "SI",
+        "CountryCode3": "SVN",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Ljubljana"
+    },
+    {
+        "Country": "Solomon Islands",
+        "ISO_Code": "677",
+        "CountryCode2": "SB",
+        "CountryCode3": "SLB",
+        "CurrencyName": "Solomon Islands Dollar",
+        "CurrencyCode": "SBD",
+        "CapitalCity": "Honiara"
+    },
+    {
+        "Country": "Somalia",
+        "ISO_Code": "252",
+        "CountryCode2": "SO",
+        "CountryCode3": "SOM",
+        "CurrencyName": "Somali Shilling",
+        "CurrencyCode": "SOS",
+        "CapitalCity": "Mogadishu"
+    },
+    {
+        "Country": "South Africa",
+        "ISO_Code": "27",
+        "CountryCode2": "ZA",
+        "CountryCode3": "ZAF",
+        "CurrencyName": "South African Rand",
+        "CurrencyCode": "ZAR",
+        "CapitalCity": "Cape Town"
+    },
+    {
+        "Country": "South Georgia and the South Sandwich Islands",
+        "ISO_Code": "500",
+        "CountryCode2": "GS",
+        "CountryCode3": "SGS",
+        "CurrencyName": "Pound Sterling",
+        "CurrencyCode": "GBP"
+    },
+    {
+        "Country": "South Korea",
+        "ISO_Code": "82",
+        "CountryCode2": "KR",
+        "CountryCode3": "KOR",
+        "CurrencyName": "South Korean Won",
+        "CurrencyCode": "KRW",
+        "CapitalCity": "Seoul"
+    },
+    {
+        "Country": "South Sudan",
+        "ISO_Code": "211",
+        "CountryCode2": "SS",
+        "CountryCode3": "SSD",
+        "CurrencyName": "South Sudanese Pound",
+        "CurrencyCode": "SSP",
+        "CapitalCity": "Juba"
+    },
+    {
+        "Country": "Spain",
+        "ISO_Code": "34",
+        "CountryCode2": "ES",
+        "CountryCode3": "ESP",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR",
+        "CapitalCity": "Madrid"
+    },
+    {
+        "Country": "Sri Lanka",
+        "ISO_Code": "94",
+        "CountryCode2": "LK",
+        "CountryCode3": "LKA",
+        "CurrencyName": "Sri Lankan Rupee",
+        "CurrencyCode": "LKR",
+        "CapitalCity": "Colombo"
+    },
+    {
+        "Country": "Sudan",
+        "ISO_Code": "249",
+        "CountryCode2": "SD",
+        "CountryCode3": "SDN",
+        "CurrencyName": "Sudanese Pound",
+        "CurrencyCode": "SDG",
+        "CapitalCity": "Khartoum"
+    },
+    {
+        "Country": "Suriname",
+        "ISO_Code": "597",
+        "CountryCode2": "SR",
+        "CountryCode3": "SUR",
+        "CurrencyName": "Surinamese Dollar",
+        "CurrencyCode": "SRD",
+        "CapitalCity": "Paramaribo"
+    },
+    {
+        "Country": "Svalbard and Jan Mayen",
+        "ISO_Code": "47",
+        "CountryCode2": "SJ",
+        "CountryCode3": "SJM",
+        "CurrencyName": "Norwegian Krone",
+        "CurrencyCode": "NOK"
+    },
+    {
+        "Country": "Swaziland",
+        "ISO_Code": "268",
+        "CountryCode2": "SZ",
+        "CountryCode3": "SWZ",
+        "CurrencyName": "Swazi Lilangeni",
+        "CurrencyCode": "SZL",
+        "CapitalCity": "Mbabane,Lobamba"
+    },
+    {
+        "Country": "Sweden",
+        "ISO_Code": "46",
+        "CountryCode2": "SE",
+        "CountryCode3": "SWE",
+        "CurrencyName": "Swedish Krona",
+        "CurrencyCode": "SEK",
+        "CapitalCity": "Stockholm"
+    },
+    {
+        "Country": "Switzerland",
+        "ISO_Code": "41",
+        "CountryCode2": "CH",
+        "CountryCode3": "CHE",
+        "CurrencyName": "Swiss Franc",
+        "CurrencyCode": "CHF",
+        "CapitalCity": "Bern"
+    },
+    {
+        "Country": "Syria",
+        "ISO_Code": "963",
+        "CountryCode2": "SY",
+        "CountryCode3": "SYR",
+        "CurrencyName": "Syrian Pound",
+        "CurrencyCode": "SYP",
+        "CapitalCity": "Damascus"
+    },
+    {
+        "Country": "Taiwan",
+        "ISO_Code": "886",
+        "CountryCode2": "TW",
+        "CountryCode3": "TWN",
+        "CurrencyName": "New Taiwan Dollar",
+        "CurrencyCode": "TWD",
+        "CapitalCity": "Taipei"
+    },
+    {
+        "Country": "Tajikistan",
+        "ISO_Code": "992",
+        "CountryCode2": "TJ",
+        "CountryCode3": "TJK",
+        "CurrencyName": "Tajikistani Somoni",
+        "CurrencyCode": "TJS",
+        "CapitalCity": "Dushanbe"
+    },
+    {
+        "Country": "Tanzania",
+        "ISO_Code": "255",
+        "CountryCode2": "TZ",
+        "CountryCode3": "TZA",
+        "CurrencyName": "Tanzanian Shilling",
+        "CurrencyCode": "TZS",
+        "CapitalCity": "Dodoma"
+    },
+    {
+        "Country": "Thailand",
+        "ISO_Code": "66",
+        "CountryCode2": "TH",
+        "CountryCode3": "THA",
+        "CurrencyName": "Thai Baht",
+        "CurrencyCode": "THB",
+        "CapitalCity": "Bangkok"
+    },
+    {
+        "Country": "Togo",
+        "ISO_Code": "228",
+        "CountryCode2": "TG",
+        "CountryCode3": "TGO",
+        "CurrencyName": "CFA Franc BCEAO",
+        "CurrencyCode": "XOF",
+        "CapitalCity": "Lome"
+    },
+    {
+        "Country": "Tokelau",
+        "ISO_Code": "690",
+        "CountryCode2": "TK",
+        "CountryCode3": "TKL",
+        "CurrencyName": "New Zealand Dollar",
+        "CurrencyCode": "NZD"
+    },
+    {
+        "Country": "Tonga",
+        "ISO_Code": "676",
+        "CountryCode2": "TO",
+        "CountryCode3": "TON",
+        "CurrencyName": "Tongan Paʻanga",
+        "CurrencyCode": "TOP",
+        "CapitalCity": "Nuku`alofa"
+    },
+    {
+        "Country": "Trinidad and Tobago",
+        "ISO_Code": "1868",
+        "CountryCode2": "TT",
+        "CountryCode3": "TTO",
+        "CurrencyName": "Trinidad and Tobago Dollar",
+        "CurrencyCode": "TTD",
+        "CapitalCity": "Port of Spain"
+    },
+    {
+        "Country": "Tristan da Cunha",
+        "ISO_Code": "290",
+        "CountryCode2": "TA",
+        "CountryCode3": "TA",
+        "CurrencyName": "Saint Helena Pound",
+        "CurrencyCode": "SHP"
+    },
+    {
+        "Country": "Tunisia",
+        "ISO_Code": "216",
+        "CountryCode2": "TN",
+        "CountryCode3": "TUN",
+        "CurrencyName": "Tunisian Dinar",
+        "CurrencyCode": "TND",
+        "CapitalCity": "Tunis"
+    },
+    {
+        "Country": "Turkey",
+        "ISO_Code": "90",
+        "CountryCode2": "TR",
+        "CountryCode3": "TUR",
+        "CurrencyName": "Turkish Lira",
+        "CurrencyCode": "TRY",
+        "CapitalCity": "Ankara"
+    },
+    {
+        "Country": "Turkmenistan",
+        "ISO_Code": "993",
+        "CountryCode2": "TM",
+        "CountryCode3": "TKM",
+        "CurrencyName": "Turkmenistani Manat",
+        "CurrencyCode": "TMT",
+        "CapitalCity": "Ashgabat"
+    },
+    {
+        "Country": "Turks and Caicos Islands",
+        "ISO_Code": "1649",
+        "CountryCode2": "TC",
+        "CountryCode3": "TCA",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Grand Turk"
+    },
+    {
+        "Country": "Tuvalu",
+        "ISO_Code": "688",
+        "CountryCode2": "TV",
+        "CountryCode3": "TUV",
+        "CurrencyName": "Australian Dollar",
+        "CurrencyCode": "AUD",
+        "CapitalCity": "Funafuti"
+    },
+    {
+        "Country": "U.S. Outlying Islands",
+        "ISO_Code": "31662",
+        "CountryCode2": "UM",
+        "CountryCode3": "UMI",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD"
+    },
+    {
+        "Country": "U.S. Virgin Islands",
+        "ISO_Code": "1340",
+        "CountryCode2": "VI",
+        "CountryCode3": "VIR",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Charlotte Amalie"
+    },
+    {
+        "Country": "Uganda",
+        "ISO_Code": "256",
+        "CountryCode2": "UG",
+        "CountryCode3": "UGA",
+        "CurrencyName": "Ugandan Shilling",
+        "CurrencyCode": "UGX",
+        "CapitalCity": "Kampala"
+    },
+    {
+        "Country": "Ukraine",
+        "ISO_Code": "380",
+        "CountryCode2": "UA",
+        "CountryCode3": "UKR",
+        "CurrencyName": "Ukrainian Hryvnia",
+        "CurrencyCode": "UAH",
+        "CapitalCity": "Kyiv"
+    },
+    {
+        "Country": "United Arab Emirates",
+        "ISO_Code": "971",
+        "CountryCode2": "AE",
+        "CountryCode3": "ARE",
+        "CurrencyName": "United Arab Emirates Dirham",
+        "CurrencyCode": "AED",
+        "CapitalCity": "Abu Dhabi"
+    },
+    {
+        "Country": "United Kingdom",
+        "ISO_Code": "44",
+        "CountryCode2": "GB",
+        "CountryCode3": "GBR",
+        "CurrencyName": "Pound Sterling",
+        "CurrencyCode": "GBP",
+        "CapitalCity": "London"
+    },
+    {
+        "Country": "United States",
+        "ISO_Code": "1",
+        "CountryCode2": "US",
+        "CountryCode3": "USA",
+        "CurrencyName": "US Dollar",
+        "CurrencyCode": "USD",
+        "CapitalCity": "Washington"
+    },
+    {
+        "Country": "Uruguay",
+        "ISO_Code": "598",
+        "CountryCode2": "UY",
+        "CountryCode3": "URY",
+        "CurrencyName": "Uruguayan Peso",
+        "CurrencyCode": "UYU",
+        "CapitalCity": "Montevideo"
+    },
+    {
+        "Country": "Uzbekistan",
+        "ISO_Code": "998",
+        "CountryCode2": "UZ",
+        "CountryCode3": "UZB",
+        "CurrencyName": "Uzbekistan Som",
+        "CurrencyCode": "UZS",
+        "CapitalCity": "Tashkent"
+    },
+    {
+        "Country": "Vanuatu",
+        "ISO_Code": "678",
+        "CountryCode2": "VU",
+        "CountryCode3": "VUT",
+        "CurrencyName": "Vanuatu Vatu",
+        "CurrencyCode": "VUV",
+        "CapitalCity": "Port-Vila"
+    },
+    {
+        "Country": "Vatican",
+        "ISO_Code": "379",
+        "CountryCode2": "VA",
+        "CountryCode3": "VAT",
+        "CurrencyName": "Euro",
+        "CurrencyCode": "EUR"
+    },
+    {
+        "Country": "Venezuela",
+        "ISO_Code": "58",
+        "CountryCode2": "VE",
+        "CountryCode3": "VEN",
+        "CurrencyName": "Bolívar Soberano",
+        "CurrencyCode": "VES",
+        "CapitalCity": "Caracas"
+    },
+    {
+        "Country": "Vietnam",
+        "ISO_Code": "84",
+        "CountryCode2": "VN",
+        "CountryCode3": "VNM",
+        "CurrencyName": "Vietnamese Dong",
+        "CurrencyCode": "VND",
+        "CapitalCity": "Hanoi"
+    },
+    {
+        "Country": "Wallis and Futuna",
+        "ISO_Code": "681",
+        "CountryCode2": "WF",
+        "CountryCode3": "WLF",
+        "CurrencyName": "CFP Franc",
+        "CurrencyCode": "XPF",
+        "CapitalCity": "Mata-Utu"
+    },
+    {
+        "Country": "Western Sahara",
+        "ISO_Code": "212",
+        "CountryCode2": "EH",
+        "CountryCode3": "ESH",
+        "CurrencyName": "Moroccan Dirham",
+        "CurrencyCode": "MAD"
+    },
+    {
+        "Country": "Yemen",
+        "ISO_Code": "967",
+        "CountryCode2": "YE",
+        "CountryCode3": "YEM",
+        "CurrencyName": "Yemeni Rial",
+        "CurrencyCode": "YER",
+        "CapitalCity": "Sanaa"
+    },
+    {
+        "Country": "Zambia",
+        "ISO_Code": "260",
+        "CountryCode2": "ZM",
+        "CountryCode3": "ZMB",
+        "CurrencyName": "Zambian Kwacha",
+        "CurrencyCode": "ZMW",
+        "CapitalCity": "Lusaka"
+    },
+    {
+        "Country": "Zimbabwe",
+        "ISO_Code": "263",
+        "CountryCode2": "ZW",
+        "CountryCode3": "ZWE",
+        "CurrencyName": "Zimbabwean Dollar",
+        "CurrencyCode": "ZWL",
+        "CapitalCity": "Harare"
+    }
+]
