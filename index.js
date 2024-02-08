@@ -157,7 +157,7 @@ if (majorNodeVersion >= 14) {
   }
 } else {
   connectDB()
-    .then(() => {
+    .then((dbConnected) => {
       httpServer.listen(port);
       UsersState.setDBConnected(dbConnected);
       console.debug('Server listening on port down' + port);
