@@ -225,14 +225,11 @@ module.exports = function (usersStatus) {
         res.status(200)
           .cookie("accessToken", accessToken, options) // set the access token in the cookie
           .cookie("refreshToken", refreshToken, options) // set the refresh token in the cookie
-          .json({ user: loggedInUser, message: "Logged in successfully", statusCode: 200, success: true });
+          .json({ user: loggedInUser, message: "Logged in successfully", statusCode: 200, success: true, accessToken:accessToken,refreshToken:refreshToken });
         return;
 
       } else {
         //DB is not connected
-
-
-   
           if(username ==="ramesh" && password ==="ramesh"){
             const { accessToken, refreshToken } =  generateAccessAndRefreshTokensLocal(
               username
@@ -274,16 +271,11 @@ module.exports = function (usersStatus) {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
     };
-
     return res
       .status(200)
       .clearCookie("accessToken", options)
       .clearCookie("refreshToken", options)
       .json({ message: "User logged out" });
-
-
-
-
   });
   //Update Record
   router.route("/:id").put(verifyJWT, async (req, res) => {

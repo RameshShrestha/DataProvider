@@ -69,16 +69,17 @@ app.use(express.json());
 app.use(express.static("express"));
 app.use(apiRequestLimiter);
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https:rameshdataprovider.onrender.com");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
   next();
 });
 // global middlewares
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: [process.env.CORS_ORIGIN,"http://localhost:3000/","http://0.0.0.0:3000/"],
     credentials: true,
+    default: process.env.CORS_ORIGIN
   })
 );
 app.use(cookieParser());
@@ -104,6 +105,7 @@ app.use("/serverstatus", function(req,res){
   res.send(UsersState);
 })
 app.use("/products", require('./routes/api/products'));
+app.use("/weatherdata", require('./routes/api/getWeatherData'));
 app.use("/countries", require('./routes/api/getCountries'));
 app.use("/users", require('./routes/api/users'));
 app.use("/realusers", require('./routes/api/registeredUsers')(UsersState));
@@ -145,7 +147,7 @@ if (majorNodeVersion >= 14) {
       console.log("Return from connection DB", dbConnected);
       httpServer.listen(port);
       UsersState.setDBConnected(dbConnected);
-      console.debug('Server listening on port ' + port);
+      console.debug('Server listening on port upper' + port);
       getAllRegisteredUsers();
     }).catch((e) => {
       console.log("Error is here 126");
@@ -159,8 +161,9 @@ if (majorNodeVersion >= 14) {
   connectDB()
     .then((dbConnected) => {
       httpServer.listen(port);
+      console.log("Return from connection DB", dbConnected);
       UsersState.setDBConnected(dbConnected);
-      console.debug('Server listening on port down' + port);
+      console.debug('Server listening on port lower' + port);
       getAllRegisteredUsers();
     })
     .catch((err) => {
@@ -169,8 +172,7 @@ if (majorNodeVersion >= 14) {
 }
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.NODE_ENV === "production" ? false : ["http://localhost:3000", "http://127.0.0.1:3000",
-                                                             "https:rameshdataprovider.onrender.com"]
+    origin: process.env.NODE_ENV === "production" ? false : ["http://localhost:3000", "http://127.0.0.1:3000","https://rameshlearningpoint.onrender.com"]
   }
 })
 var chatController = require('./SocketControllers/chatController');
