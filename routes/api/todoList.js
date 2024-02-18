@@ -22,7 +22,7 @@ router.route("/getList").get(verifyJWT,async (req, res) => {
   }
   });
   router.route("/addTodoList").post(async (req, res) => {
-    const { title, content, targetCompletionDate,status,username } = req.body;
+    const { title, content, targetCompletionDate,status,username ,complitionPercent} = req.body;
     let result = "";
     try{
     const todoItem = await ToDoList.create({
@@ -30,6 +30,7 @@ router.route("/getList").get(verifyJWT,async (req, res) => {
         content,
         username,
         targetCompletionDate,
+        complitionPercent,
         status
       });
       res.json({message:"Added Successfully",item :todoItem});
@@ -53,10 +54,10 @@ router.route("/getList").get(verifyJWT,async (req, res) => {
   });
   router.route("/updateItem/:id").put(async (req, res) => {
     let id = req.params.id;
-    const { title, content, targetCompletionDate,status,username } = req.body;
+    const { title, content, targetCompletionDate,status,username ,complitionPercent} = req.body;
 
     try{
-    let result= await ToDoList.findByIdAndUpdate(id,{content,status});
+    let result= await ToDoList.findByIdAndUpdate(id,{content,status,complitionPercent});
       res.json({message:"Updated Successfully",result});
     }catch( error) {
       console.log(error); 

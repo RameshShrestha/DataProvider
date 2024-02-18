@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const fs = require('fs');
+const { verifyJWT, getLoggedInUserOrIgnore } = require("../../middlewares/AuthHandler");
 let data = require('../../users.json');
 const dotenv = require('dotenv');
 var productfile = require('./products.json');
@@ -51,17 +52,35 @@ router.route("/").get(function (req, res) {
                 res.send(err);
                 return;
             }
+            let filterId =   Number(req.query.id);
+            let filterTitle =   req.query.title;
+            let filterDescription =   req.query.description;
+            let filterRating  =  Number(req.query.rating);
+            let filteredProducts = data.products;
+           
+            if(filterRating){
+                filteredProducts = filteredProducts.filter((item)=>(Math.floor(item.rating) === filterRating));
+            }
+            if(filterId){
+                filteredProducts = filteredProducts.filter((item)=>(item.id === filterId));
+            }
+            if(filterTitle){
+                filteredProducts = filteredProducts.filter((item)=>(item.title.toLowerCase().includes(filterTitle.toLowerCase())));
+            }
+            if(filterDescription){
+                filteredProducts = filteredProducts.filter((item)=>(item.description.toLowerCase().includes(filterDescription.toLowerCase())));
+            }
             data.total = data.length;
             data.skip = 0;
             data.limit = data.length;
-            let skip = req.query.skip || 0;
+            let skip = Number(req.query.skip) || 0;
             let limit = req.query.limit;
-            if (req.query.limit > data.length) {
-                limit = data.length;
+            if (req.query.limit > filteredProducts.length) {
+                limit = filteredProducts.length;
             }
             limit = parseInt(limit);
             const finalData = {
-                "products": data.products.slice(skip, limit), "total": data.products.length,
+                "products": filteredProducts.slice(skip, limit), "total": filteredProducts.length,
                 skip: skip, limit: limit
             };
             res.send(finalData);
@@ -69,8 +88,9 @@ router.route("/").get(function (req, res) {
     }
     //__dirname : It will resolve to your project folder.
 });
-router.route("/").post((req, res) => {
+router.route("/").post(verifyJWT,(req, res) => {
     res.setHeader('Content-Type', 'application/json');
+    let requestedUser =  req.user.username;
     let newData = req.body;
 
     jsonReader("./routes/api/products.json", (err, data) => {
@@ -80,6 +100,11 @@ router.route("/").post((req, res) => {
         }
         const dataLength = data.products[data.products.length - 1].id || 0;
         newData.id = parseInt(dataLength) + 1;
+
+        newData.createdBy = requestedUser;
+        newData.updatedBy = requestedUser;
+        newData.createdOn = new Date();
+        newData.updatedOn = new Date();
         data.products.push(newData);
 
         const finalData = { "products": data.products };
@@ -87,17 +112,18 @@ router.route("/").post((req, res) => {
         try {
 
 
-            fs.writeFileSync('./products.json', jsonString);
+            fs.writeFileSync('./routes/api/products.json', jsonString);
         } catch (e) {
             res.send({ message: "error", data: e });
         }
         res.send({ message: "Added Successfully", data: newData });
     });
 });
-router.route("/:ids").put((req, res) => {
+router.route("/:ids").put(verifyJWT,(req, res) => {
     let ids = req.params.ids;
     let idsArray = ids.split(",");
-
+    let requestedUser =  req.user.username;
+    console.log("update request by :", requestedUser);
     let updatedProducts = req.body;
     console.log(ids, updatedProducts);
     res.setHeader('Content-Type', 'application/json');
@@ -109,8 +135,10 @@ router.route("/:ids").put((req, res) => {
         const FinalProducts = data.products.map((product) => {
             if (idsArray.indexOf(product.id.toString()) >-1) {
                 console.log("record found", product.id);
-                const foundProducts= updatedProducts.filter((updatedProduct) =>(updatedProduct.id === product.id));
+                const foundProducts= updatedProducts.filter((updatedProduct) =>(updatedProduct.id === product.id && product.createdBy === requestedUser));
                 if(foundProducts.length>0){
+                    foundProducts[0].updatedBy =requestedUser;
+                    foundProducts[0].updatedOn = new Date();
                      return foundProducts[0];
                 }else{
                     //should not come here any way , incase it comes it will return original data;
@@ -127,9 +155,9 @@ router.route("/:ids").put((req, res) => {
         res.send({ message: "Updated Successfully", data: updatedProducts });
     });
 });
-router.route("/:id").delete((req, res) => {
+router.route("/:id").delete(verifyJWT,(req, res) => {
     let id = req.params.id;
-
+    let requestedUser =  req.user.username;
     res.setHeader('Content-Type', 'application/json');
 
     jsonReader("./routes/api/products.json", (err, data) => {
@@ -142,7 +170,11 @@ router.route("/:id").delete((req, res) => {
 
         if (productIndex < 0) {
             res.send("No such record found");
-        } else {
+        }else if(data.products[productIndex].createdBy !== requestedUser){
+            console.log("Users :" ,requestedUser,data.products[productIndex].createdBy )
+            res.status(401).send({ message: "Unauthorized to delete others record"});
+        }
+         else {
             data.products.splice(productIndex, 1);
             const recordTobeDeleted = data.products[productIndex];
             const finalData = { "products": data.products };

@@ -19,7 +19,7 @@ const { connectDB } = require("./DB/mongodb");
 // Create the rate limit rule
 const apiRequestLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 30 // limit each IP to 30 requests per windowMs
+  limit : 100 // limit each IP to 30 requests per windowMs
 })
 dotenv.config({
   path: "./.env",
@@ -112,7 +112,7 @@ app.use("/realusers", require('./routes/api/registeredUsers')(UsersState));
 app.use("/settings", require('./routes/api/UserSettings'));
 app.use("/todolist", require('./routes/api/todoList'));
 app.use("/news", require('./FromRAPIDAPI/newsprovider'));
-
+app.use("/usefullinks", require('./routes/api/getUsefulLinks'));
 app.use(ErrorHandler);
 
 const httpServer = http.createServer(app);

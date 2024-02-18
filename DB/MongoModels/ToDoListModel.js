@@ -15,6 +15,12 @@ const todoListSchema = new mongoose.Schema(
         status: {
             type: String,
         },
+        complitionPercent : {
+            type : Number,
+            min : 0,
+            max : 100,
+            default : 0,
+        },
         targetCompletionDate: {
             type: Date,
         }
