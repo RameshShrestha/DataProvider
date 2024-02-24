@@ -14,12 +14,14 @@ const fs = require('fs');
 const { ErrorHandler } = require('./middlewares/ErrorHandler');
 const getRegisteredUsers = require('./routes/api/getAllUsers');
 //const { RegisteredUser } = require("./DB/MongoModels/RegisteredUserModel");
+const { Notifications } = require("./DB/MongoModels/NotificationModel");
 const { ChatMessage } = require("./DB/MongoModels/ChatMessageModel");
 const { connectDB } = require("./DB/mongodb");
+const { addCallerLog } = require('./DB/Logger/logger');
 // Create the rate limit rule
 const apiRequestLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  limit : 100 // limit each IP to 30 requests per windowMs
+  limit: 100 // limit each IP to 30 requests per windowMs
 })
 dotenv.config({
   path: "./.env",
@@ -38,19 +40,19 @@ const savedUserlist = null;// temporary memory for saving userslist
 async function getAllRegisteredUsers() {
   let allUsers;
   if (getRegisteredUsers) {
-    if(savedUserlist && savedUserlist.length > 0){
+    if (savedUserlist && savedUserlist.length > 0) {
       allUsers = savedUserlist;
-    }else{
-       allUsers = await getRegisteredUsers(UsersState.dbConnected);
-   }
+    } else {
+      allUsers = await getRegisteredUsers(UsersState.dbConnected);
+    }
 
-   //console.log("All users", allUsers);
+    //console.log("All users", allUsers);
     const userArray = [];
     allUsers?.forEach((user) => {
       let userStructure = {
         id: "",//blank socket id
         name: user.username,
-        fullName :user.firstName + " " + user.lastName,
+        fullName: user.firstName + " " + user.lastName,
         status: "Offline",
         loginTime: "",
         image: user.image || "",
@@ -67,6 +69,12 @@ const app = express();
 //app.set('UsersState', UsersState);//setting variable to access usersstate inside router
 app.use(express.json());
 app.use(express.static("express"));
+app.use(requestIp.mw());
+app.use(function (req, res, next) {
+  const ip = req.clientIp;
+  console.log("IP : ", ip);
+  next();
+});
 app.use(apiRequestLimiter);
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -77,7 +85,7 @@ app.use(function (req, res, next) {
 // global middlewares
 app.use(
   cors({
-    origin: [process.env.CORS_ORIGIN,"http://localhost:3000/","http://0.0.0.0:3000/"],
+    origin: [process.env.CORS_ORIGIN, "http://localhost:3000/", "http://0.0.0.0:3000/"],
     credentials: true,
     default: process.env.CORS_ORIGIN
   })
@@ -96,12 +104,14 @@ app.use(passport.session()); // persistent login sessions
 
 // default URL for website
 app.all('*', function (req, res, next) {
-  
-  console.log("170", req.hostname, req.ip , req.path);
 
+  console.log("170", req.hostname, req.ip, req.path);
+  if (req.path.indexOf("/logs") < 0) {
+    addCallerLog(req.hostname, req.ip, req.path);
+  }
   next();
 });
-app.use("/serverstatus", function(req,res){
+app.use("/serverstatus", function (req, res) {
   res.send(UsersState);
 })
 app.use("/products", require('./routes/api/products'));
@@ -113,6 +123,12 @@ app.use("/settings", require('./routes/api/UserSettings'));
 app.use("/todolist", require('./routes/api/todoList'));
 app.use("/news", require('./FromRAPIDAPI/newsprovider'));
 app.use("/usefullinks", require('./routes/api/getUsefulLinks'));
+app.use("/contactmsg", require('./routes/api/contactMessage'));
+app.use("/logs", require('./routes/api/getLogs'));
+app.use("/notifications", require('./routes/api/getNotifications'));
+app.use("/images", function (req, res) {
+  res.send("OK");//Just to track user is looking into imagelist page
+});
 app.use(ErrorHandler);
 
 const httpServer = http.createServer(app);
@@ -172,9 +188,15 @@ if (majorNodeVersion >= 14) {
 }
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.NODE_ENV === "production" ? false : ["http://localhost:3000", "http://127.0.0.1:3000","https://rameshlearningpoint.onrender.com"]
+    origin: process.env.NODE_ENV === "production" ? false : ["http://localhost:3000", "http://127.0.0.1:3000", "https://rameshlearningpoint.onrender.com"]
   }
-})
+});
+io.engine.on("connection_error", (err) => {
+  console.log(err.req);      // the request object
+  console.log(err.code);     // the error code, for example 1
+  console.log(err.message);  // the error message, for example "Session ID unknown"
+  console.log(err.context);  // some additional error context
+});
 var chatController = require('./SocketControllers/chatController');
 
 var chat = io
@@ -191,9 +213,9 @@ var chat = io
       socket.emit('message', buildMsg("Admin", `You are online ,with socket id : ${socket.id}`));
 
       socket.emit('loggedInUserDetail', user);
-    //  console.log("trigger user list");
+      //  console.log("trigger user list");
       socket.emit('userlist', {
-  
+
         users: getUsersInRoom(user)
       });
       sendChatMessagesFromServer(socket, name);
@@ -237,13 +259,20 @@ var chat = io
       }
       console.log(`User ${socket.id} disconnected`);
     });
-    socket.on('adminNotification',({notification})=>{
+    socket.on('adminNotification', async ({ notification }) => {
       const user = getUser(socket.id);
       console.log("Admin User", user);
       //check if User have Admin authorization later
-      console.log("Notificaiton to be triggered", notification);
-      notification.id= randomUUID();
+      console.log("Notification to be triggered", notification);
+      notification.id = randomUUID();
       socket.broadcast.emit('NotificationFromAdmin', notification);
+
+      await Notifications.create({
+        ...notification,
+        from_user: "Admin",
+        to_user: "AllUsers"
+      });
+
     })
     //Listening for a message  event
     socket.on('message', ({ name, text }) => {
@@ -266,40 +295,51 @@ var chat = io
       //   $and: [{ sender }, { receiver }],
       // }).exec();
 
-      if(UsersState.dbConnected){
+      if (UsersState.dbConnected) {
         //Save chats only if DB is connected
-     
-      const savedChat = await ChatMessage.create({
-        sender,
-        receiver,
-        content: currentMessage,
-      });
-      console.log("Chat saving", savedChat);
-   
 
-      const receiverDetail = UsersState.users.find((user) => (user.name === receiver));
-      console.log("Receiver Detail", receiverDetail?.id);
-      socket.emit("newChatMessageRecieved", savedChat); //send back own message to user
-      if (receiverDetail && receiverDetail.id) {
-        socket.to(receiverDetail.id).emit("newChatMessageRecieved", savedChat); // sending message at receiver socket
+        const savedChat = await ChatMessage.create({
+          sender,
+          receiver,
+          content: currentMessage,
+        });
+        console.log("Chat saving", savedChat);
+
+
+        const receiverDetail = UsersState.users.find((user) => (user.name === receiver));
+        console.log("Receiver Detail", receiverDetail?.id);
+
+        socket.emit("newChatMessageRecieved", savedChat); //send back own message to user
+
+        if (receiverDetail && receiverDetail.id) {
+          socket.to(receiverDetail.id).emit("newChatMessageRecieved", savedChat); // sending message at receiver socket
+        }else{
+          console.log("User offline, saving as notificaiton");
+          await Notifications.create({
+            title :"New Message",
+            message :"1 New Message received",
+            type:"Info",
+            from_user: sender,
+            to_user: receiver
+          });
+        }
       }
- }
 
     });
     socket.on('fetchUserChat', async ({ currentUser, chatUser }) => {
       //fetching chat history between currentUser and Chat User
       let chatsWithUser = [];
-      if(UsersState.dbConnected){
-      const existedCurrentUserChat = await ChatMessage.find({
-        $or: [{ sender: currentUser }, { receiver: currentUser }]
-      }).exec();
-       chatsWithUser = existedCurrentUserChat.filter((chatItem) => {
-        if (chatItem.sender === chatUser || chatItem.receiver === chatUser) {
-          return chatItem;
-        }
-      })
-    }
-    //  console.log(`Existing Chat betwenn ${currentUser} and ${chatUser}`, chatsWithUser);
+      if (UsersState.dbConnected) {
+        const existedCurrentUserChat = await ChatMessage.find({
+          $or: [{ sender: currentUser }, { receiver: currentUser }]
+        }).exec();
+        chatsWithUser = existedCurrentUserChat.filter((chatItem) => {
+          if (chatItem.sender === chatUser || chatItem.receiver === chatUser) {
+            return chatItem;
+          }
+        })
+      }
+      //  console.log(`Existing Chat betwenn ${currentUser} and ${chatUser}`, chatsWithUser);
       socket.emit('chatHistoryLoad', { oldChat: chatsWithUser, currentUser: currentUser, chatUser: chatUser });
 
     });
@@ -319,13 +359,14 @@ var chat = io
     })
 
     async function sendChatMessagesFromServer(socket, currentUser) {
-      if(UsersState.dbConnected){
-      const existedChat = await ChatMessage.find({
-        $or: [{ sender: currentUser }, { receiver: currentUser }],
-      }).exec();
-     // console.log("Existing Chat", existedChat);
-      socket.emit('receiveChatMessage', existedChat);}
-      else{
+      if (UsersState.dbConnected) {
+        const existedChat = await ChatMessage.find({
+          $or: [{ sender: currentUser }, { receiver: currentUser }],
+        }).exec();
+        // console.log("Existing Chat", existedChat);
+        socket.emit('receiveChatMessage', existedChat);
+      }
+      else {
         socket.emit('receiveChatMessage', []);
       }
     }
@@ -361,8 +402,8 @@ var chat = io
         if (oldUser.name === userName) {
           oldUser.id = id;
           oldUser.loginTime = loginTime,
-          //  oldUser.image = image;
-          oldUser.status = "Online";
+            //  oldUser.image = image;
+            oldUser.status = "Online";
           return oldUser;
         } else {
           return oldUser;
@@ -389,12 +430,12 @@ var chat = io
       return UsersState.users.find(user => user.id === id)
     }
 
-   function  getUsersInRoom(currentUser) {
+    function getUsersInRoom(currentUser) {
       // if (currentUser) {
       //   return UsersState.users.filter((user) => user.name != currentUser.name);
       // }
       // getAllRegisteredUsers();
-    
+
       return UsersState.users;
     }
 

@@ -8,7 +8,7 @@ const fs = require('fs');
 const { verifyJWT, getLoggedInUserOrIgnore } = require("../../middlewares/AuthHandler");
 let executedClearBackupTime = new Date();
 const jsonReader = function (filePath, cb) {
-    console.log("Reading file", filePath);
+   // console.log("Reading file", filePath);
     fs.readFileSync(filePath, (err, fileData) => {
         if (err) {
             console.log("error fetching file", err);
@@ -16,7 +16,7 @@ const jsonReader = function (filePath, cb) {
         }
         try {
             const object = JSON.parse(fileData);
-            console.log("File Content", object);
+           // console.log("File Content", object);
             return cb && cb(null, object);
         } catch (err) {
             console.log("Error", err);
@@ -80,7 +80,7 @@ const clearOldWeatherData = async () => {
         const finalData = { "weatherData": newWeatherData };
         const jsonString = JSON.stringify(finalData);
         fs.writeFileSync('./DB/LocalDataProvider/WeatherBackup.json', jsonString);
-        console.log("Weather Data prior 24 hours are removed");
+       // console.log("Weather Data prior 24 hours are removed");
         executedClearBackupTime = new Date();
     } catch (error) {
         console.log(error);
@@ -92,7 +92,7 @@ const checkLocalWeatherData = async (lat, lng) => {
 
     let latRange = { min: lat - 10, max: lat + 10 };
     let lngRange = { min: lng - 10, max: lng + 10 };
-    console.log("checking local Weather Data");
+  //  console.log("checking local Weather Data");
     try {
         let fileData = fs.readFileSync("./DB/LocalDataProvider/WeatherBackup.json");
         const data = JSON.parse(fileData);
@@ -129,7 +129,7 @@ const saveFetchedWeatherData = async (data, forcastData, lat, lng) => {
             data.weatherData = [];
             data.weatherData.push(dataToSave);
         }
-        console.log(data);
+       // console.log(data);
         const finalData = { "weatherData": data.weatherData };
         const jsonString = JSON.stringify(finalData);
         // console.log("Writing to local data ", jsonString);

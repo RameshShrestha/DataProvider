@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 
  const verifyJWT = async (req, res, next) => {
   // console.log("Cookies",req.cookies);
-   console.log("Authorization Found : ",req.header("Authorization"));
+  // console.log("Authorization Found : ",req.header("Authorization"));
     const token =
         req.cookies?.accessToken ||
         req.header("Authorization")?.replace("Bearer ", "");
@@ -21,7 +21,7 @@ const jwt = require("jsonwebtoken");
     try {
         
         const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        console.log("decodedToken",decodedToken);
+      //  console.log("decodedToken",decodedToken);
         RegisteredUser.findById
         const user = await RegisteredUser.findById(decodedToken?._id).select(
             "-password -refreshToken -emailVerificationToken -emailVerificationExpiry"
@@ -65,7 +65,8 @@ const jwt = require("jsonwebtoken");
         req.user = user;
         next();
     } catch (error) {
-        // Fail silently with req.user being falsy
+        // Fail silently with req.user being false
+    
         next();
     }
 };

@@ -106,19 +106,19 @@ module.exports = function (usersStatus) {
   router.route("/:id").get(verifyJWT, async (req, res) => {
     let id = req.params.id;
     
-    console.log("session user :", req.user);
+   // console.log("session user :", req.user);
     let requestedUser = id ;
     if(requestedUser ==="nouser"){
       requestedUser =  req.user.username;
     }
-    console.log("Parameter user :", id);
+    //console.log("Parameter user :", id);
     if (requestedUser) {
       res.setHeader('Content-Type', 'application/json');
       try {
-        console.log("requestedUser",requestedUser);
+       // console.log("requestedUser",requestedUser);
         const existedUser = await UserProfile.findOne({ username: requestedUser});
         if (existedUser) {
-            console.log("Existing user Found");
+           // console.log("Existing user Found");
           res.send(existedUser);
 
           return;
@@ -146,7 +146,7 @@ module.exports = function (usersStatus) {
       });
 
       if (existedUser) {
-        console.log("came from existing user");
+      //  console.log("came from existing user");
         res.send(existedUser);
 
         return;
@@ -158,7 +158,7 @@ module.exports = function (usersStatus) {
         isEmailVerified: false,
         role: role || "USER" //["ADMIN","USER"],
       });
-      console.log("51", user);
+     // console.log("51", user);
       // await RegisteredUser.save({ validateBeforeSave: false });
       const createdUser = await RegisteredUser.findById(user._id).select(
         "-password -refreshToken -emailVerificationToken -emailVerificationExpiry"
@@ -167,7 +167,7 @@ module.exports = function (usersStatus) {
       if (!createdUser) {
         throw ("Something went wrong while registering the user");
       }
-      console.log(createdUser);
+     // console.log(createdUser);
       return res
         .status(201)
         .json({ user: createdUser, message: "Registered Successfully" });
@@ -180,7 +180,7 @@ module.exports = function (usersStatus) {
 
   //Handle Login
   router.route("/login").post(async (req, res, next) => {
-    console.log("usersStatus", usersStatus);
+   // console.log("usersStatus", usersStatus);
     const { email, username, password, role } = req.body;
     try {
 
