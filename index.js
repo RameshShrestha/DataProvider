@@ -107,7 +107,7 @@ app.all('*', function (req, res, next) {
 
   console.log("170", req.hostname, req.ip, req.path);
   if (req.path.indexOf("/logs") < 0) {
-    addCallerLog(req.hostname, req.socket?.remoteAddress, req.path);
+    addCallerLog(req.hostname, req.clientIp, req.path);
   }
   next();
 });
