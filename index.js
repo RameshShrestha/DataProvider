@@ -69,6 +69,7 @@ const app = express();
 //app.set('UsersState', UsersState);//setting variable to access usersstate inside router
 app.use(express.json());
 app.use(express.static("express"));
+app.set('trust proxy', true) ;
 app.use(requestIp.mw());
 app.use(function (req, res, next) {
   const ip = req.clientIp;
