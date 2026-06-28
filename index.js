@@ -1,6 +1,7 @@
 const http = require('http');
+//const https = require('https');
 const dotenv = require('dotenv');
-const express = require('express');
+const jwt = require("jsonwebtoken");
 const { randomUUID } = require('crypto'); // Added in: node v14.17.0
 const rateLimit = require('express-rate-limit')
 const cookieParser = require('cookie-parser');
@@ -9,19 +10,23 @@ const session = require("express-session");
 const passport = require("passport");
 const requestIp = require("request-ip");
 const { Server } = require("socket.io");
-const path = require('path');
-const fs = require('fs');
 const { ErrorHandler } = require('./middlewares/ErrorHandler');
-const getRegisteredUsers = require('./routes/api/getAllUsers');
-//const { RegisteredUser } = require("./DB/MongoModels/RegisteredUserModel");
-const { Notifications } = require("./DB/MongoModels/NotificationModel");
-const { ChatMessage } = require("./DB/MongoModels/ChatMessageModel");
+const path = require('path');
+const express = require('express');
 const { connectDB } = require("./DB/mongodb");
 const { addCallerLog } = require('./DB/Logger/logger');
-// Create the rate limit rule
+const getRegisteredUsers = require('./routes/api/getAllUsers');
+const { getLoggedInUserOrIgnore } = require("./middlewares/AuthHandler");
+const { ChatMessage } = require("./DB/MongoModels/ChatMessageModel");
+const { Notifications } = require("./DB/MongoModels/NotificationModel");
+//const { addLog } = require('./Utils/LogCreator');
+const app = express();
+let users = require('./LocalData/Users.json');
+let quotes = require('./LocalData/Quotes.json');
+
 const apiRequestLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  limit: 100 // limit each IP to 30 requests per windowMs
+  limit: 5000 // limit each IP to 30 requests per windowMs
 })
 dotenv.config({
   path: "./.env",
@@ -36,11 +41,14 @@ const UsersState = {
     this.dbConnected = isConnected;
   }
 }
-const savedUserlist = null;// temporary memory for saving userslist
-async function getAllRegisteredUsers() {
+let savedUserlist = null;// temporary memory for saving userslist
+async function getAllRegisteredUsers(newUserRegistered) {
   let allUsers;
   if (getRegisteredUsers) {
-    if (savedUserlist && savedUserlist.length > 0) {
+    if (newUserRegistered) {
+      allUsers = await getRegisteredUsers(UsersState.dbConnected);//refresh user list when new user is registered
+    }
+    else if (savedUserlist && savedUserlist.length > 0) {
       allUsers = savedUserlist;
     } else {
       allUsers = await getRegisteredUsers(UsersState.dbConnected);
@@ -64,33 +72,43 @@ async function getAllRegisteredUsers() {
     // return users;
   }
 }
-getAllRegisteredUsers();
-const app = express();
-//app.set('UsersState', UsersState);//setting variable to access usersstate inside router
+getAllRegisteredUsers(false);
+
+
 app.use(express.json());
 app.use(express.static("express"));
-app.set('trust proxy', true) ;
+
 app.use(requestIp.mw());
 app.use(function (req, res, next) {
   const ip = req.clientIp;
-  console.log("IP : ", ip);
+  // console.log("IP : ", ip);
   next();
 });
-app.use(apiRequestLimiter);
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
-  next();
-});
+
 // global middlewares
-app.use(
-  cors({
-    origin: [process.env.CORS_ORIGIN, "http://localhost:3000/", "http://0.0.0.0:3000/"],
-    credentials: true,
-    default: process.env.CORS_ORIGIN
-  })
-);
+ app.use(
+   cors({
+     origin: ["http://localhost:8887", "http://127.0.0.1:8887", "https://rameshlearningpoint.onrender.com", "https://testramesh-irhww2w9.launchpad.cfapps.us10.hana.ondemand.com",
+       "http://localhost:3000","http://localhost"
+     ],
+     credentials: true,
+     default: process.env.CORS_ORIGIN
+   })
+ );
+ // Configure trust proxy securely - trust only the first proxy (common for cloud platforms like Render, Heroku, etc.)
+ // If you're not behind a proxy, set this to false
+ app.set('trust proxy', 1);
+
+app.use(apiRequestLimiter);
+/*
+ app.use(function (req, res, next) {
+   res.header("Access-Control-Allow-Origin", "https://testramesh-irhww2w9.launchpad.cfapps.us10.hana.ondemand.com");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
+   next();
+ });
+ */
+//app.use(cors());
 app.use(cookieParser());
 // required for passport
 app.use(
@@ -105,13 +123,28 @@ app.use(passport.session()); // persistent login sessions
 
 // default URL for website
 app.all('*', function (req, res, next) {
-
-  console.log("170", req.hostname, req.ip, req.path);
-  if (req.path.indexOf("/logs") < 0) {
-    addCallerLog(req.hostname, req.clientIp, req.path);
+  
+  const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
+ 
+  let username = "anonymous";
+  try {
+    if (token) {
+      const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+   //   console.log("Decoded Token", decodedToken);
+      username = decodedToken?.username || "anonymous";
+   
+    }
+  } catch (error) {
+    next();
+  }
+  // console.log("170", req.hostname, req.ip, req.path);
+  if (req.path.indexOf("/logs") < 0 && req.hostname.indexOf("localhost") < 0) {
+   // console.log("sent to add to log :::", req.hostname, req.clientIp, req.path,username);
+    addCallerLog(req.hostname, req.clientIp, req.path,username);
   }
   next();
 });
+app.use("/auth", require('./routes/api/callbacks'));
 app.use("/serverstatus", function (req, res) {
   res.send(UsersState);
 })
@@ -119,43 +152,52 @@ app.use("/products", require('./routes/api/products'));
 app.use("/weatherdata", require('./routes/api/getWeatherData'));
 app.use("/countries", require('./routes/api/getCountries'));
 app.use("/users", require('./routes/api/users'));
+app.use("/dumpquestion", require('./routes/api/getDumpQuestions'));
 app.use("/realusers", require('./routes/api/registeredUsers')(UsersState));
 app.use("/settings", require('./routes/api/UserSettings'));
 app.use("/todolist", require('./routes/api/todoList'));
 app.use("/news", require('./FromRAPIDAPI/newsprovider'));
+app.use("/newsapi", require('./routes/api/getNewsData'));
 app.use("/usefullinks", require('./routes/api/getUsefulLinks'));
 app.use("/contactmsg", require('./routes/api/contactMessage'));
+app.use("/servererrorlog", require('./routes/api/getServerErrorLogs'));
 app.use("/logs", require('./routes/api/getLogs'));
 app.use("/notifications", require('./routes/api/getNotifications'));
 app.use("/images", function (req, res) {
   res.send("OK");//Just to track user is looking into imagelist page
 });
+app.use("/newusercreated", function (req, res) {
+  getAllRegisteredUsers(true);
+  res.send("done");
+})
+app.use("/testerror", function (req, res) {
+  throw new Error("Intentional Error thrown");
+})
+
+
 app.use(ErrorHandler);
+// app.get('/', function (req, res) {
+//   res.send('Hello World!');
+// });
+app.get("/", getLoggedInUserOrIgnore);
+app.get('/dummyusers', function (req, res) {
+  res.send(users);
+});
+app.get('/dummyusers/:id', function (req, res) {
+  let id = req.params.id;
 
+  let user = users.users.filter(item => item.id == id);
+  res.send(user);
+});
+
+app.get('/quote', function (req, res) {
+  const number = Math.trunc(Math.random() * 1450)
+  res.send(quotes.quotes[number]);
+});
+//const port = process.env.PORT || 3004;
 const httpServer = http.createServer(app);
-const port = process.env.PORT || 3001;
-
-
-//console.log("PORT=", process.env.PORT, "DB_URL : ", process.env.MONGODB_URI);
-// httpServer.listen(port);
-// console.debug('Server listening on port ' + port);
-
-/**
- * Starting from Node.js v14 top-level await is available and it is only available in ES modules.
- * This means you can not use it with common js modules or Node version < 14.
- */
+const port = process.env.PORT || 3004;
 const majorNodeVersion = +process.env.NODE_VERSION?.split(".")[0] || 0;
-
-// const startServer = () => {
-//   httpServer.listen(process.env.PORT || 8080, () => {
-//     console.info(
-//       `📑 Visit the documentation at: http://localhost:${
-//         process.env.PORT || 8080
-//       }`
-//     );
-//     console.log("⚙️  Server is running on port: " + process.env.PORT);
-//   });
-// };
 
 if (majorNodeVersion >= 14) {
   try {
@@ -165,7 +207,7 @@ if (majorNodeVersion >= 14) {
       httpServer.listen(port);
       UsersState.setDBConnected(dbConnected);
       console.debug('Server listening on port upper' + port);
-      getAllRegisteredUsers();
+      getAllRegisteredUsers(false);
     }).catch((e) => {
       console.log("Error is here 126");
       console.log(e);
@@ -187,18 +229,41 @@ if (majorNodeVersion >= 14) {
       console.log("Mongo db connect error: ", err);
     });
 }
+// app.listen(port, function () {
+//   console.log('myapp listening on port ' + port);
+// });
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.NODE_ENV === "production" ? false : ["http://localhost:3000", "http://127.0.0.1:3000", "https://rameshlearningpoint.onrender.com"]
+    origin: ["https://testramesh-irhww2w9.launchpad.cfapps.us10.hana.ondemand.com","http://localhost:3000","http://localhost:80"],
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true
   }
 });
-io.engine.on("connection_error", (err) => {
-  console.log(err.req);      // the request object
-  console.log(err.code);     // the error code, for example 1
-  console.log(err.message);  // the error message, for example "Session ID unknown"
-  console.log(err.context);  // some additional error context
+
+
+//  app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH,OPTIONS");
+//   next();
+// });
+// const io = new Server(httpServer, {
+//   cors: {
+//   origin: "*"
+// }
+//});
+io.engine.on("connection_error", async (err) => {
+  console.log("Error at io engine");
+  //console.log(err.req);      // the request object
+  // console.log(err.code);     // the error code, for example 1
+  // console.log(err.message);  // the error message, for example "Session ID unknown"
+  // console.log(err.context);  // some additional error context
+  //await addLog(JSON.stringify(err.req));
+  //await addLog("Error at io Engine");
 });
 var chatController = require('./SocketControllers/chatController');
+
+
 
 var chat = io
   .of('/chat')
@@ -206,10 +271,12 @@ var chat = io
     console.log(`User ${socket.id} connected`);
     socket.on('getOnline', ({ name, loginTime, image }) => {
       //leave previous room
-      console.log("User joined chat");
+      // console.log("User joined chat", socket.id,name,loginTime);
       const user = activateUser(socket.id, name, loginTime, image);
+      //console.log("User activated");
       //Join room
       socket.join("chatroom");
+      // console.log("joined chatroom");
       //To user who joined
       socket.emit('message', buildMsg("Admin", `You are online ,with socket id : ${socket.id}`));
 
@@ -230,17 +297,17 @@ var chat = io
     socket.on('getOnlineUsers', (event) => {
       //leave previous room
       //   console.log(event);
-      console.log("Fetching online users");
+      // console.log("Fetching online users");
       //    const user = activateUser(socket.id, userName);
       //Join room
-      // socket.join("chatroom");
+      socket.join("chatroom");
       //To user who joined
-      //socket.emit('message', buildMsg(ADMIN, `You are online`));
+      socket.emit('message', buildMsg("ADMIN", `You are online`));
       socket.emit('userlist', {
         users: getUsersInRoom()
       });
       //to Every one else
-      // socket.broadcast.to("chatroom").emit('message', buildMsg(ADMIN, `${user.name} is online`));
+      // socket.broadcast.to("chatroom").emit('message', buildMsg("ADMIN", `${user.name} is online`));
 
     })
     //When user disconnects - to all Others
@@ -258,13 +325,13 @@ var chat = io
         // })
 
       }
-      console.log(`User ${socket.id} disconnected`);
+      // console.log(`User ${socket.id} disconnected`);
     });
     socket.on('adminNotification', async ({ notification }) => {
       const user = getUser(socket.id);
-      console.log("Admin User", user);
+      //  console.log("Admin User", user);
       //check if User have Admin authorization later
-      console.log("Notification to be triggered", notification);
+      //  console.log("Notification to be triggered", notification);
       notification.id = randomUUID();
       socket.broadcast.emit('NotificationFromAdmin', notification);
 
@@ -287,7 +354,7 @@ var chat = io
     );
     socket.on("chatMessage", async (chatData) => {
       const { sender, receiver, currentMessage } = chatData;
-      console.log(sender, receiver, currentMessage);
+      // console.log(sender, receiver, currentMessage);
       //find socketid of the receiver;
 
 
@@ -304,22 +371,22 @@ var chat = io
           receiver,
           content: currentMessage,
         });
-        console.log("Chat saving", savedChat);
+        //     console.log("Chat saving", savedChat);
 
 
         const receiverDetail = UsersState.users.find((user) => (user.name === receiver));
-        console.log("Receiver Detail", receiverDetail?.id);
+        //   console.log("Receiver Detail", receiverDetail?.id);
 
         socket.emit("newChatMessageRecieved", savedChat); //send back own message to user
 
         if (receiverDetail && receiverDetail.id) {
           socket.to(receiverDetail.id).emit("newChatMessageRecieved", savedChat); // sending message at receiver socket
-        }else{
-          console.log("User offline, saving as notificaiton");
+        } else {
+          //    console.log("User offline, saving as notificaiton");
           await Notifications.create({
-            title :"New Message",
-            message :"1 New Message received",
-            type:"Info",
+            title: "New Message",
+            message: "1 New Message received",
+            type: "Info",
             from_user: sender,
             to_user: receiver
           });
@@ -353,9 +420,9 @@ var chat = io
       }
     });
     socket.on('typingEvent', ({ sender, receiver }) => {
-      console.log(sender, " typing event to ", receiver);
+      //  console.log(sender, " typing event to ", receiver);
       const foundUser = UsersState.users.find((user) => user.name === receiver);
-      console.log("foundUser", foundUser)
+      // console.log("foundUser", foundUser)
       socket.to(foundUser.id).emit("chatUserTyping", ({ sender, receiver }));
     })
 
@@ -399,6 +466,8 @@ var chat = io
     //User functions
     function activateUser(id, userName, loginTime, image) {
       const user = { id, name: userName, status: "Online", loginTime: loginTime, image: image, chatNotification: 0 };
+      //   console.log(user);
+
       const changedUsers = UsersState.users.map((oldUser) => {
         if (oldUser.name === userName) {
           oldUser.id = id;

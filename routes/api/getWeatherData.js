@@ -171,6 +171,7 @@ router.route("/").get(async (req, res) => {
             res.send(weatherData);
         }
     } catch (error) {
+        console.log(error);
         res.send(error);
     }
 });
