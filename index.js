@@ -163,6 +163,7 @@ app.use("/contactmsg", require('./routes/api/contactMessage'));
 app.use("/servererrorlog", require('./routes/api/getServerErrorLogs'));
 app.use("/logs", require('./routes/api/getLogs'));
 app.use("/notifications", require('./routes/api/getNotifications'));
+app.use("/chatwithai", require('./routes/api/aichat'));
 app.use("/images", function (req, res) {
   res.send("OK");//Just to track user is looking into imagelist page
 });

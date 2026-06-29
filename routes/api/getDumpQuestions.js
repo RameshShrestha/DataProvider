@@ -4,23 +4,58 @@ const path = require('path');
 const { dumpQuestions } = require("../../DB/MongoModels/DumpQuestionsModel");
 const { verifyJWT, getLoggedInUserOrIgnore } = require("../../middlewares/AuthHandler");
 router.route("/").get(async (req, res) => {
-  let result = "";
-  // req.user ="ramesh"//
-  // console.log("calling user " ,req.user);
-  // if(req.user){
+  try {
+    // Extract pagination parameters
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
 
+    // Extract filter parameters
+    const filters = {};
+    if (req.query.category) {
+      filters.category = req.query.category;
+    }
+    if (req.query.questionType) {
+      filters.questionType = req.query.questionType;
+    }
+    if (req.query.createdBy) {
+      filters.createdBy = req.query.createdBy;
+    }
+    if (req.query.search) {
+      filters.questionText = { $regex: req.query.search, $options: 'i' };
+    }
 
-  dumpQuestions.find().then(function (data) {
-    console.log("Fetching dump questions"); // Success
-    res.json({ dumpQuestions: data });
-  }).catch(function (error) {
-    console.log(error); // Failure
-    result = result + " \n Data deleted Registered";
-    res.send(result);
-  });
-  //   }else{
-  //     res.send({message:"User not valid"});
-  //   }
+    // Get total count for pagination metadata
+    const totalCount = await dumpQuestions.countDocuments(filters);
+    const totalPages = Math.ceil(totalCount / limit);
+
+    // Fetch paginated and filtered data
+    const data = await dumpQuestions
+      .find(filters)
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 });
+
+    console.log("Fetching dump questions");
+    
+    res.json({
+      dumpQuestions: data,
+      pagination: {
+        currentPage: page,
+        totalPages: totalPages,
+        totalCount: totalCount,
+        limit: limit,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: "Failed to fetch dump questions",
+      message: error.message
+    });
+  }
 });
 router.route("/:_id").get( async (req, res) => {
     //let lat = req.query.lat;
