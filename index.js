@@ -235,8 +235,15 @@ if (majorNodeVersion >= 14) {
 // });
 const io = new Server(httpServer, {
   cors: {
-    origin: ["https://rameshdataprovider.onrender.com","http://localhost:3000","http://localhost:80"],
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: [
+      "https://rameshdataprovider.onrender.com",
+      "https://rameshlearningpoint.onrender.com",
+      "https://testramesh-irhww2w9.launchpad.cfapps.us10.hana.ondemand.com",
+      "http://localhost:3000",
+      "http://localhost:80",
+      "http://localhost"
+    ],
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     credentials: true
   }
 });
