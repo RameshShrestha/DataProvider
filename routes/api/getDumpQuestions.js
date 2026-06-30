@@ -3,12 +3,14 @@ const router = express.Router();
 const path = require('path');
 const { dumpQuestions } = require("../../DB/MongoModels/DumpQuestionsModel");
 const { verifyJWT, getLoggedInUserOrIgnore } = require("../../middlewares/AuthHandler");
-router.route("/").get(async (req, res) => {
+router.route("/").get(verifyJWT,async (req, res) => {
   try {
     let userId = "";
      if(req.user){
-      userId =req.user.username
+      userId =req.user.username;
      }
+     console.log("fetching Data for user : ",userId);
+
     // Extract pagination parameters
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -16,15 +18,18 @@ router.route("/").get(async (req, res) => {
 
     // Extract filter parameters
     const filters = {};
+    
+    // Always filter by logged-in user
+    if (userId) {
+      filters.createdBy = userId;
+    }
+    
     if (req.query.category) {
       filters.category = req.query.category;
     }
     if (req.query.questionType) {
       filters.questionType = req.query.questionType;
     }
-   // if (req.query.createdBy) {
-   //   filters.createdBy = userId;
-   // }
     if (req.query.search) {
       filters.questionText = { $regex: req.query.search, $options: 'i' };
     }
@@ -80,7 +85,7 @@ router.route("/category").get(async (req, res) => {
   }
 });
 
-router.route("/takequiz").get(async (req, res) => {
+router.route("/takequiz").get(verifyJWT, async (req, res) => {
   try {
     const { user, category } = req.query;
 
@@ -134,7 +139,11 @@ router.route("/:_id").get( async (req, res) => {
     }
 });
 
-router.route("/addquestions").post(async (req, res) => {
+router.route("/addquestions").post(verifyJWT,async (req, res) => {
+     let userId = "";
+     if(req.user){
+      userId =req.user.username;
+     }
   const { category, questionType, questionText, correctAnswersCount, answerOptions } = req.body;
   let result = "";
 
@@ -144,7 +153,7 @@ router.route("/addquestions").post(async (req, res) => {
       category,
       questionType,
       questionText,
-      createdBy: "ramesh",
+      createdBy: userId,
       correctAnswersCount,
       answerOptions
 
@@ -156,19 +165,22 @@ router.route("/addquestions").post(async (req, res) => {
     res.send(result);
   }
 });
-router.route("/removeItem/:id").delete(async (req, res) => {
+router.route("/removeItem/:id").delete(verifyJWT, async (req, res) => {
   let id = req.params.id;
-
+  let userId = "";
+     if(req.user){
+      userId =req.user.username;
+     }
   try {
-    let result = await dumpQuestions.deleteOne({ _id: id });
+    let result = await dumpQuestions.deleteOne({ _id: id ,createdBy: userId });
     res.json({ message: "Deleted Successfully", ...result });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     result = error.toString();
     res.send(result);
   }
 });
-router.route("/updateItem/:id").put(async (req, res) => {
+router.route("/updateItem/:id").put(verifyJWT, async (req, res) => {
   let id = req.params.id;
   const { category,questionType, questionText, correctAnswersCount, answerOptions } = req.body;
 
@@ -176,7 +188,7 @@ router.route("/updateItem/:id").put(async (req, res) => {
     let result = await dumpQuestions.findByIdAndUpdate(id, {category, questionType, questionText, correctAnswersCount, answerOptions });
     res.json({ message: "Updated Successfully", result });
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     result = error.toString();
     res.send(result);
   }
