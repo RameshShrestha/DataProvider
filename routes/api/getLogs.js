@@ -35,5 +35,33 @@ router.route("/iplogs").get(verifyJWT, async(req, res) => {
         res.send(error);
     }
 });
+
+router.route("/iplogs").delete(verifyJWT, async(req, res) => {
+    try {
+        const { id } = req.query;
+        
+        // If no ID provided, delete all logs
+        if (!id) {
+            const result = await userLogs.deleteMany({});
+            return res.json({
+                message: "All logs deleted successfully",
+                deletedCount: result.deletedCount
+            });
+        }
+
+        // Delete specific log by ID
+        const result = await userLogs.findByIdAndDelete(id);
+        
+        if (!result) {
+            return res.status(404).json({ error: "Log not found" });
+        }
+
+        res.json({ message: "Log deleted successfully", deletedLog: result });
+    } catch (error) {
+        console.error("Error deleting log:", error);
+        res.status(500).json({ error: "Failed to delete log", details: error.message });
+    }
+});
+
 module.exports = router;
 

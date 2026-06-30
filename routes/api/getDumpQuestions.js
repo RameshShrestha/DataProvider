@@ -5,6 +5,10 @@ const { dumpQuestions } = require("../../DB/MongoModels/DumpQuestionsModel");
 const { verifyJWT, getLoggedInUserOrIgnore } = require("../../middlewares/AuthHandler");
 router.route("/").get(async (req, res) => {
   try {
+    let userId = "";
+     if(req.user){
+      userId =req.user.username
+     }
     // Extract pagination parameters
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
@@ -18,9 +22,9 @@ router.route("/").get(async (req, res) => {
     if (req.query.questionType) {
       filters.questionType = req.query.questionType;
     }
-    if (req.query.createdBy) {
-      filters.createdBy = req.query.createdBy;
-    }
+   // if (req.query.createdBy) {
+   //   filters.createdBy = userId;
+   // }
     if (req.query.search) {
       filters.questionText = { $regex: req.query.search, $options: 'i' };
     }
@@ -50,13 +54,72 @@ router.route("/").get(async (req, res) => {
       }
     });
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     res.status(500).json({
       error: "Failed to fetch dump questions",
       message: error.message
     });
   }
 });
+
+router.route("/category").get(async (req, res) => {
+  try {
+    // Get unique categories from the database
+    const categories = await dumpQuestions.distinct("category");
+    
+    res.json({
+      categories: categories,
+      count: categories.length
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: "Failed to fetch categories",
+      message: error.message
+    });
+  }
+});
+
+router.route("/takequiz").get(async (req, res) => {
+  try {
+    const { user, category } = req.query;
+
+    // Validate required parameters
+    if (!category) {
+      return res.status(400).json({
+        error: "Category parameter is required"
+      });
+    }
+
+    // Build filter
+    const filters = { category };
+
+    // Get total count for the category
+    const totalCount = await dumpQuestions.countDocuments(filters);
+
+    // Fetch 20 random questions from the category
+    const questions = await dumpQuestions.aggregate([
+      { $match: filters },
+      { $sample: { size: Math.min(20, totalCount) } }
+    ]);
+
+    res.json({
+      user: user || "anonymous",
+      category: category,
+      totalQuestionsInCategory: totalCount,
+      questionsProvided: questions.length,
+      questions: questions
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      error: "Failed to fetch quiz questions",
+      message: error.message
+    });
+  }
+});
+
 router.route("/:_id").get( async (req, res) => {
     //let lat = req.query.lat;
     let questionId =  req.params._id;
@@ -118,4 +181,5 @@ router.route("/updateItem/:id").put(async (req, res) => {
     res.send(result);
   }
 });
+
 module.exports = router;
