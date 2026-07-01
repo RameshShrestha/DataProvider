@@ -26,7 +26,26 @@ let quotes = require('./LocalData/Quotes.json');
 
 const apiRequestLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  limit: 5000 // limit each IP to 30 requests per windowMs
+  limit: 5000 // limit each IP to 5000 requests per windowMs
+})
+
+// AI Chat Rate Limiter - More restrictive for expensive LLM calls
+const aiChatLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 20, // limit each IP to 20 AI requests per 15 minutes
+  message: {
+    success: false,
+    error: 'Too many AI requests from this IP, please try again after 15 minutes',
+    retryAfter: '15 minutes'
+  },
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  // Skip rate limiting for certain conditions (optional)
+  skip: (req) => {
+    // You can add logic here to skip rate limiting for premium users
+    // For example: return req.user?.isPremium === true;
+    return false;
+  }
 })
 dotenv.config({
   path: "./.env",
@@ -163,7 +182,7 @@ app.use("/contactmsg", require('./routes/api/contactMessage'));
 app.use("/servererrorlog", require('./routes/api/getServerErrorLogs'));
 app.use("/logs", require('./routes/api/getLogs'));
 app.use("/notifications", require('./routes/api/getNotifications'));
-app.use("/chatwithai", require('./routes/api/aichat'));
+app.use("/chatwithai", aiChatLimiter, require('./routes/api/aichat'));
 app.use("/images", function (req, res) {
   res.send("OK");//Just to track user is looking into imagelist page
 });
