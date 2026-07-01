@@ -1,13 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const OpenAI = require('openai');
+const axios = require('axios');
 
-// Initialize OpenAI client to connect to Ollama
-// Ollama runs locally and is compatible with OpenAI API
+// Initialize Ollama client
+// Check if using cloud or local Ollama
+const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
+const isCloudOllama = OLLAMA_BASE_URL.includes('ollama.com');
+
+console.log('=== OLLAMA CONFIGURATION ===');
+console.log('OLLAMA_BASE_URL:', OLLAMA_BASE_URL);
+console.log('isCloudOllama:', isCloudOllama);
+console.log('OLLAMA_API_KEY:', process.env.OLLAMA_API_KEY ? 'Set (hidden)' : 'Not set');
+console.log('===========================');
+
+// For cloud Ollama, use the API endpoint with authentication
+// For local Ollama, use the local endpoint
 const ollama = new OpenAI({
-  baseURL: process.env.OLLAMA_BASE_URL || 'http://localhost:11434/v1',
-  apiKey: 'ollama', // Ollama doesn't require a real API key, but the SDK needs something
+  baseURL: isCloudOllama ? 'https://ollama.com/v1' : `${OLLAMA_BASE_URL}/v1`,
+  apiKey: process.env.OLLAMA_API_KEY || 'ollama',
+  defaultHeaders: isCloudOllama ? {
+    'Authorization': `Bearer ${process.env.OLLAMA_API_KEY}`
+  } : {}
 });
+
+// URL for fetching available models
+const OLLAMA_MODELS_URL = isCloudOllama
+  ? 'https://ollama.com/api/tags'
+  : `${OLLAMA_BASE_URL}/api/tags`;
 
 // Initialize OpenRouter client
 const openrouter = new OpenAI({
@@ -230,21 +250,46 @@ router.get('/models', async (req, res) => {
     // Fetch Ollama models if requested or no service specified
     if (!service || service.toLowerCase() === SERVICE_TYPES.OLLAMA) {
       try {
-        const ollamaResponse = await ollama.models.list();
+        console.log('Fetching models from:', OLLAMA_MODELS_URL);
+        console.log('Is cloud Ollama:', isCloudOllama);
+        
+        const headers = isCloudOllama && process.env.OLLAMA_API_KEY
+          ? { 'Authorization': `Bearer ${process.env.OLLAMA_API_KEY}` }
+          : {};
+
+        console.log('Using headers:', headers.Authorization ? 'With Authorization' : 'No Authorization');
+
+        const response = await axios.get(OLLAMA_MODELS_URL, {
+          headers,
+          timeout: 10000
+        });
+
+        console.log('Models fetched successfully. Count:', response.data.models?.length || 0);
+
+        const models = response.data.models || [];
+        
         result.services.ollama = {
           available: true,
-          models: ollamaResponse.data.map(model => ({
-            id: model.id,
-            created: model.created,
-            owned_by: model.owned_by
+          models: models.map(model => ({
+            id: model.name,
+            name: model.name,
+            size: model.size,
+            modified_at: model.modified_at,
+            digest: model.digest,
+            details: model.details
           })),
-          defaultModel: DEFAULT_OLLAMA_MODEL
+          defaultModel: DEFAULT_OLLAMA_MODEL,
+          source: isCloudOllama ? 'cloud' : 'local',
+          baseURL: isCloudOllama ? 'https://ollama.com' : OLLAMA_BASE_URL
         };
       } catch (error) {
         result.services.ollama = {
           available: false,
           error: error.message,
-          defaultModel: DEFAULT_OLLAMA_MODEL
+          defaultModel: DEFAULT_OLLAMA_MODEL,
+          suggestion: isCloudOllama
+            ? 'Check your OLLAMA_API_KEY in .env file'
+            : 'Make sure Ollama is running locally'
         };
       }
     }
@@ -343,21 +388,33 @@ router.get('/health', async (req, res) => {
 
   // Check Ollama
   try {
-    const ollamaResponse = await ollama.models.list();
+    const headers = isCloudOllama && process.env.OLLAMA_API_KEY
+      ? { 'Authorization': `Bearer ${process.env.OLLAMA_API_KEY}` }
+      : {};
+
+    const response = await axios.get(OLLAMA_MODELS_URL, {
+      headers,
+      timeout: 5000
+    });
+
     health.services.ollama = {
       status: 'running',
       available: true,
-      baseURL: process.env.OLLAMA_BASE_URL || 'http://localhost:11434/v1',
-      modelsAvailable: ollamaResponse.data.length,
-      defaultModel: DEFAULT_OLLAMA_MODEL
+      baseURL: isCloudOllama ? 'https://ollama.com/v1' : `${OLLAMA_BASE_URL}/v1`,
+      modelsAvailable: response.data.models?.length || 0,
+      defaultModel: DEFAULT_OLLAMA_MODEL,
+      source: isCloudOllama ? 'cloud' : 'local',
+      authenticated: isCloudOllama ? !!process.env.OLLAMA_API_KEY : 'not required'
     };
   } catch (error) {
     health.services.ollama = {
       status: 'not accessible',
       available: false,
       error: error.message,
-      baseURL: process.env.OLLAMA_BASE_URL || 'http://localhost:11434/v1',
-      suggestion: 'Make sure Ollama is running on your system'
+      baseURL: isCloudOllama ? 'https://ollama.com/v1' : `${OLLAMA_BASE_URL}/v1`,
+      suggestion: isCloudOllama
+        ? 'Check your OLLAMA_API_KEY and network connection'
+        : 'Make sure Ollama is running locally'
     };
   }
 
